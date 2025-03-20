@@ -1,0 +1,31 @@
+.breadcrumbs{
+  position: absolute;
+  width: 100%;
+  max-width: 186.8rem;
+  padding: 0 2rem;
+  pointer-events: none;
+  top: calc(100% + 2rem);
+  left: 50%;
+  transform: translateX(-50%);
+  color: #FFF;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  a{
+    pointer-events: auto;
+    color: rgba(#A7A6A8, 0.7);
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    span{
+      display: inline-flex;
+      padding: 0 1.6rem;
+      color: #E32A2F;
+    }
+    &:hover{
+      color: rgba(#A7A6A8, 1);
+    }
+  }
+}

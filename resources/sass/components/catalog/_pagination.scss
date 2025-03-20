@@ -1,0 +1,36 @@
+.pagination{
+  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  @media (max-width: 767px){
+    gap: 4px;
+  }
+  & > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6.2rem;
+    height: 6.2rem;
+    padding: 0.2rem;
+    border-radius: 1.4rem;
+    background: rgba(40, 39, 49, 0.35);
+    color:  #FFF;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    @media (max-width: 767px){
+      font-size: 1.4rem;
+      width: 5rem;
+      height: 5rem;
+    }
+    &:hover{
+      background: rgba(40, 39, 49, 1);
+    }
+    &.current, &.active{
+      background-color: #E32A2F;
+    }
+  }
+}

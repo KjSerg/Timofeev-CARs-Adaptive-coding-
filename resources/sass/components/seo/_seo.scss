@@ -1,0 +1,11 @@
+.seo{
+  &-section{
+    &__text{
+      columns: auto 2;
+      column-gap: 6rem;
+      @media (max-width: 767px) {
+        columns: 1;
+      }
+    }
+  }
+}
