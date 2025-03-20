@@ -415,6 +415,34 @@ input, textarea {
       padding: 3rem 0;
     }
   }
+  &__description{
+    color: #A7A6A8;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 3rem;
+  }
+  &-head{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+    @media (max-width: 860px){
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+    }
+    &-column{
+      &:nth-child(2){
+        width: 100%;
+        max-width: 51rem;
+        @media (max-width: 860px){
+
+        }
+      }
+    }
+  }
 }
 
 .slider {

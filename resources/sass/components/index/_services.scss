@@ -10,6 +10,9 @@
     padding: 2.4rem;
     width: calc(25% - 1.6rem);
     min-height: 44rem;
+    &--default{
+      min-height: auto;
+    }
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
