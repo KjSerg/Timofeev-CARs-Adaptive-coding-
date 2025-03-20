@@ -25026,7 +25026,7 @@ var copyLink = function copyLink() {
     var text = $this.attr('data-copy');
     if (text === undefined) text = $this.attr('href');
     (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.copyToClipboard)(text);
-    (0,_plugins_fancybox_init__WEBPACK_IMPORTED_MODULE_1__.showMsg)('copied');
+    (0,_plugins_fancybox_init__WEBPACK_IMPORTED_MODULE_1__.showMsg)('', 'copied');
   });
 };
 
@@ -25490,28 +25490,21 @@ var fancyboxInit = function fancyboxInit() {
     jquery__WEBPACK_IMPORTED_MODULE_0___default().fancybox.close();
   });
 };
-function showMsg(msg) {
-  var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-  var title = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
-  var url = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
-  var selector = '#dialog' + (type ? '-' + type : '');
+function showMsg() {
+  var msg = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  var selector = '#dialog';
   var $modal = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).find(selector);
   if ($modal.length === 0) {
     alert(msg);
-    if (url) {
-      window.location.href = url;
-    }
     return;
   }
   $modal.find('.modal__title').html(title);
   $modal.find('.modal__text').html(msg);
-  jquery__WEBPACK_IMPORTED_MODULE_0___default().fancybox.open($modal, {
-    afterClose: function afterClose() {
-      if (url) {
-        window.location.href = url;
-      }
-    }
-  });
+  jquery__WEBPACK_IMPORTED_MODULE_0___default().fancybox.open($modal);
+  setTimeout(function () {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default().fancybox.close();
+  }, 3000);
 }
 function showNotices() {
   var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;

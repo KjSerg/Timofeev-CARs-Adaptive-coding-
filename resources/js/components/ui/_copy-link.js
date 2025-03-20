@@ -8,6 +8,6 @@ export const copyLink = () => {
         let text = $this.attr('data-copy');
         if (text === undefined) text = $this.attr('href');
         copyToClipboard(text);
-        showMsg('copied');
+        showMsg('', 'copied');
     });
 }
