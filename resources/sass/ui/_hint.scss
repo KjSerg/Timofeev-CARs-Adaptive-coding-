@@ -1,0 +1,43 @@
+.hint{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  flex-grow: 0;
+  flex-shrink: 0;
+  &__text{
+    width: 12rem;
+    display: block;
+    padding: 1rem;
+    position: absolute;
+    bottom: calc(100% + 1rem);
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 1rem;
+    background: #030305;
+    color: #FFF;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 2rem;
+    opacity: 0;
+    transition: 0.1s ease-in-out;
+    pointer-events: none;
+    @media (max-width: 1200px) {
+      left: auto;
+      right: 0;
+      transform: translateX(0);
+    }
+  }
+  &__icon{
+    width: 100%;
+    height: 100%;
+  }
+  &:hover{
+    .hint__text{
+      opacity: 1;
+    }
+  }
+}

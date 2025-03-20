@@ -10,6 +10,8 @@ import {toggler} from "./ui/_togglers";
 import {tabs} from "./ui/_tabs";
 import Slick from "../plugins/Slick";
 import {catalogFilterInit} from "./forms/_catalog-filter";
+import {copyLink} from "./ui/_copy-link";
+import {showText} from "./ui/_show-text";
 
 export default class Application {
     constructor() {
@@ -51,6 +53,8 @@ export default class Application {
             fancyboxInit();
             tabs();
             catalogFilterInit();
+            copyLink();
+            showText();
             this.showLoaderOnClick();
             this.linkListener();
             this.mainProductTrigger();

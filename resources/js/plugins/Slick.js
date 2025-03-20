@@ -8,6 +8,7 @@ export default class Slick {
     init() {
         this.reviewSliderInit();
         this.gallerySliderInit();
+        this.recommendationsSliderInit();
     }
 
     reviewSliderInit() {
@@ -26,6 +27,37 @@ export default class Slick {
 
                     {
                         breakpoint: 1200,
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    },
+                    {
+                        breakpoint: 601,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            });
+
+        });
+    }
+    recommendationsSliderInit() {
+
+        $(document).find('.recommendations-slider').each(function () {
+            const $slider = $(this);
+            const $prev = $(this).closest('section').find('.slick__prev');
+            const $next = $(this).closest('section').find('.slick__next');
+            $slider.slick({
+                slidesToShow: 3,
+                arrows: true,
+                prevArrow: $prev,
+                nextArrow: $next,
+                dots: true,
+                responsive: [
+
+                    {
+                        breakpoint: 1025,
                         settings: {
                             slidesToShow: 2
                         }
@@ -66,6 +98,14 @@ export default class Slick {
                 centerMode: false,
                 focusOnSelect: true,
                 arrows: false,
+                responsive: [
+                    {
+                        breakpoint: 601,
+                        settings: {
+                            slidesToShow: 3
+                        }
+                    }
+                ]
             });
         });
     }

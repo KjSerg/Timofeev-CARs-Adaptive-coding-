@@ -12,6 +12,12 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  @media (max-width: 650px) {
+    font-size: 1.4rem;
+  }
   a{
     pointer-events: auto;
     color: rgba(#A7A6A8, 0.7);
@@ -19,10 +25,16 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    @media (max-width: 650px) {
+      font-size: 1.4rem;
+    }
     span{
       display: inline-flex;
       padding: 0 1.6rem;
       color: #E32A2F;
+      @media (max-width: 650px) {
+        padding: 0 0.6rem;
+      }
     }
     &:hover{
       color: rgba(#A7A6A8, 1);

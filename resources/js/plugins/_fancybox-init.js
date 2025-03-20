@@ -21,7 +21,7 @@ export const fancyboxInit = () => {
     });
 };
 
-export function showMsg(msg, type = '', title = 'Importantly', url = '') {
+export function showMsg(msg, type = '', title = '', url = '') {
     const selector = '#dialog' + (type ? '-' + type : '');
     const $modal = $(document).find(selector);
     if ($modal.length === 0) {
