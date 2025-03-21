@@ -1,4 +1,4 @@
-import {detectBrowser, isMobile, showPreloader} from "./utils/_helpers";
+import {detectBrowser, isHorizontal, isMobile, showPreloader} from "./utils/_helpers";
 import {burger} from "./ui/_burger";
 import {accordion} from "./ui/_accardion";
 import {numberInput} from "./forms/_number-input";
@@ -12,6 +12,7 @@ import Slick from "../plugins/Slick";
 import {catalogFilterInit} from "./forms/_catalog-filter";
 import {copyLink} from "./ui/_copy-link";
 import {showText} from "./ui/_show-text";
+import {hoveredModel} from "./ui/_models";
 
 export default class Application {
     constructor() {
@@ -35,10 +36,11 @@ export default class Application {
     initBrowserAttributes() {
         const browserName = detectBrowser();
         this.$body.attr("data-browser", browserName).addClass(browserName);
-
-        if (isMobile) {
-            this.$body.attr("data-mobile", "mobile");
-        }
+        $(window).on('load resize', (e) => {
+            const attr = window.innerWidth > window.innerHeight ? 'horizontal' : 'vertical'
+            this.$body.attr("data-screen-position", attr);
+            this.$body.attr("data-mobile", isMobile ? "mobile" : '');
+        });
     }
 
     initComponents() {
@@ -55,12 +57,14 @@ export default class Application {
             catalogFilterInit();
             copyLink();
             showText();
+            hoveredModel();
             this.showLoaderOnClick();
             this.linkListener();
             this.mainProductTrigger();
             const form = new FormHandler('.form-js');
             const slick = new Slick();
         });
+
     }
 
 
@@ -111,10 +115,10 @@ export default class Application {
             if ($(window).width() > 1023) return;
             $box.addClass('active');
         });
-        this.$doc.mouseup( function(e){
+        this.$doc.mouseup(function (e) {
             var div = $('.main-product-box');
-            if ( !div.is(e.target)
-                && div.has(e.target).length === 0 ) {
+            if (!div.is(e.target)
+                && div.has(e.target).length === 0) {
                 div.removeClass('active');
             }
         });

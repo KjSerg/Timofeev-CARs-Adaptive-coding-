@@ -2,11 +2,19 @@
   &-container {
     position: relative;
     z-index: 2;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
     padding-top: 57rem;
     width: 100%;
-    max-width: 78rem;
+    max-width: 82rem;
     margin: 0 auto;
     text-align: center;
+    @media (max-width: 1600px){
+      padding-top: 40rem;
+    }
+    @media (max-width: 450px){
+      padding-top: 28rem;
+    }
   }
 
   &__subtitle{
@@ -50,5 +58,11 @@
       height: calc(100% - 40.3rem);
       background: linear-gradient(180deg, rgba(14, 13, 19, 0.00) 0%, #0E0D13 95.47%);
     }
+  }
+}
+
+body[data-mobile="mobile"][data-screen-position="horizontal"]{
+  .head-container{
+    padding-top: 17rem;
   }
 }

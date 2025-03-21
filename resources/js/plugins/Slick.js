@@ -41,6 +41,19 @@ export default class Slick {
             });
 
         });
+        $(document).find('.review-car-slider').each(function () {
+            const $slider = $(this);
+            const $prev = $(this).closest('section').find('.slick__prev');
+            const $next = $(this).closest('section').find('.slick__next');
+            $slider.slick({
+                slidesToShow: 1,
+                arrows: true,
+                prevArrow: $prev,
+                nextArrow: $next,
+                dots: false
+            });
+
+        });
     }
     recommendationsSliderInit() {
 

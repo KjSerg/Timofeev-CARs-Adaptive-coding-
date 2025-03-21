@@ -127,6 +127,7 @@ export function invertNumber(num) {
 }
 
 export const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+export const isHorizontal = window.innerWidth > window.innerHeight;
 
 export function getQueryParams() {
     const urlParams = new URLSearchParams(window.location.search);

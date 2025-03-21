@@ -1,0 +1,18 @@
+.rating{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 0.6rem;
+  .star{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+    &:not(.active){
+      opacity: 0.5;
+    }
+  }
+}

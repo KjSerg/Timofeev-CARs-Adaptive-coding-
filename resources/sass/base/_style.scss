@@ -159,6 +159,18 @@ input, textarea {
   font-style: normal;
   font-weight: 400;
   line-height: 2.8rem;
+
+  &--columns{
+    column-count: 2;
+    column-gap: 6rem;
+    @media (max-width: 768px){
+      column-gap: 3rem;
+    }
+    @media (max-width: 600px){
+      column-count: 1;
+    }
+  }
+
   blockquote{
     position: relative;
     padding-left: 6.4rem;
