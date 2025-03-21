@@ -13,7 +13,7 @@
       padding-top: 40rem;
     }
     @media (max-width: 450px){
-      padding-top: 28rem;
+      padding-top: 38rem;
     }
   }
 
@@ -63,6 +63,8 @@
 
 body[data-mobile="mobile"][data-screen-position="horizontal"]{
   .head-container{
-    padding-top: 17rem;
+    @media (max-width: 900px){
+      padding-top: 17rem;
+    }
   }
 }

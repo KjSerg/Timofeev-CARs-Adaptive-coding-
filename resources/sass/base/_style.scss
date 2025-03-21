@@ -421,6 +421,9 @@ input, textarea {
 }
 
 .section {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 center;
   &-padding {
     padding: 9rem 0;
     @media (max-width: 1024px) {
