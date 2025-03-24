@@ -2,7 +2,9 @@
   &__description {
     max-width: 75rem;
     text-align: center;
-
+    &--small{
+      max-width: 58rem;
+    }
   }
 
   &__title {

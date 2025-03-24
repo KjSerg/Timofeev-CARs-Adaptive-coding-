@@ -15,8 +15,6 @@
 @import 'footer/footer';
 @import 'footer/social-networks';
 @import 'seo/seo';
-@import 'catalog/catalog';
-@import 'catalog/pagination';
 @import 'single/single';
 @import 'single/about-product';
 @import 'single/product-video';
@@ -27,3 +25,6 @@
 @import 'inner/models';
 @import 'inner/advantages';
 @import 'inner/pricing';
+@import 'catalog/catalog';
+@import 'catalog/pagination';
+@import 'catalog/repair';
