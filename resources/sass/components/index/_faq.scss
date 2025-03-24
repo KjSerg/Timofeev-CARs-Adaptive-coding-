@@ -3,11 +3,12 @@
   max-width: 110rem;
   margin: 0 auto;
 
+
   &-item {
     border-radius: 2.2rem;
     overflow: hidden;
     background: #16141B;
-    @media (max-width: 768px){
+    @media (max-width: 768px) {
       border-radius: 1.8rem;
     }
 
@@ -28,9 +29,9 @@
 
     }
 
-    &.active{
-      .faq-item__icon{
-        svg path:last-child{
+    &.active {
+      .faq-item__icon {
+        svg path:last-child {
           opacity: 0;
         }
       }
@@ -50,7 +51,7 @@
       padding-top: 1.6rem;
       margin: 2.6rem;
       margin-top: 0;
-      @media (max-width: 768px){
+      @media (max-width: 768px) {
         margin: 1.6rem;
         margin-top: 0;
       }
@@ -64,12 +65,13 @@
     &__number {
       flex-grow: 0;
       flex-shrink: 0;
+
       span {
         display: inline-block;
         padding: 0 1.6rem;
         color: #E32A2F;
         transition: 0.4s ease-in-out;
-        @media (max-width: 768px){
+        @media (max-width: 768px) {
           padding: 0 1rem;
         }
       }
@@ -110,12 +112,23 @@
       line-height: 3rem;
       transition: 0.4s ease-in-out;
       cursor: pointer;
-      @media (max-width: 768px){
+      @media (max-width: 768px) {
         align-items: flex-start;
         padding: 1rem 2rem;
         font-size: 1.6rem;
         line-height: 2rem;
 
+      }
+    }
+  }
+
+  &-section{
+    &.section--dark {
+      .faq-item{
+        background: rgba(40, 39, 49, 0.35);
+      }
+      .faq-item-head {
+        background: rgba(40, 39, 49, 0);
       }
     }
   }

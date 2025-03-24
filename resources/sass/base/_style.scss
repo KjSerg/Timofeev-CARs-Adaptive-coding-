@@ -160,18 +160,18 @@ input, textarea {
   font-weight: 400;
   line-height: 2.8rem;
 
-  &--columns{
+  &--columns {
     column-count: 2;
     column-gap: 6rem;
-    @media (max-width: 768px){
+    @media (max-width: 768px) {
       column-gap: 3rem;
     }
-    @media (max-width: 600px){
+    @media (max-width: 600px) {
       column-count: 1;
     }
   }
 
-  blockquote{
+  blockquote {
     position: relative;
     padding-left: 6.4rem;
     color: #FFF;
@@ -183,7 +183,8 @@ input, textarea {
       padding-left: 4rem;
       font-size: 1.8rem;
     }
-    &:before{
+
+    &:before {
       top: 0;
       left: 0;
       position: absolute;
@@ -200,16 +201,20 @@ input, textarea {
       }
     }
   }
+
   ol {
     counter-reset: list;
-    li{
-      &:not(:last-child){
+
+    li {
+      &:not(:last-child) {
         margin-bottom: 1.4rem;
       }
+
       list-style-type: none;
       position: relative;
       padding-left: 2rem;
-      &:before{
+
+      &:before {
         position: absolute;
         left: 0;
 
@@ -267,6 +272,7 @@ input, textarea {
       line-height: 3rem;
     }
   }
+
   h5 {
     color: #FFF;
     font-size: 2.6rem;
@@ -278,6 +284,7 @@ input, textarea {
       line-height: 3rem;
     }
   }
+
   h4 {
     color: #FFF;
     font-size: 3rem;
@@ -289,6 +296,7 @@ input, textarea {
       line-height: 3rem;
     }
   }
+
   h3 {
     color: #FFF;
     font-size: 3.6rem;
@@ -300,6 +308,7 @@ input, textarea {
       line-height: 4rem;
     }
   }
+
   h2 {
     color: #FFF;
     font-size: 4rem;
@@ -311,6 +320,7 @@ input, textarea {
       line-height: 4rem;
     }
   }
+
   h1 {
     color: #FFF;
     font-size: 4.4rem;
@@ -424,35 +434,43 @@ input, textarea {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 center;
+
+  &--dark {
+    background: #16141B;
+  }
+
   &-padding {
     padding: 9rem 0;
     @media (max-width: 1024px) {
       padding: 3rem 0;
     }
   }
-  &__description{
+
+  &__description {
     color: #A7A6A8;
     font-size: 1.8rem;
     font-style: normal;
     font-weight: 400;
     line-height: 3rem;
   }
-  &-head{
+
+  &-head {
     display: flex;
     align-items: center;
     gap: 2rem;
     justify-content: space-between;
     margin-bottom: 4rem;
-    @media (max-width: 860px){
+    @media (max-width: 860px) {
       flex-direction: column;
       align-items: flex-start;
       gap: 0;
     }
-    &-column{
-      &:nth-child(2){
+
+    &-column {
+      &:nth-child(2) {
         width: 100%;
         max-width: 51rem;
-        @media (max-width: 860px){
+        @media (max-width: 860px) {
 
         }
       }
