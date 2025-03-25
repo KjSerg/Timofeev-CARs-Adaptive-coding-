@@ -55,6 +55,7 @@ export default class Slick {
 
         });
     }
+
     recommendationsSliderInit() {
 
         $(document).find('.recommendations-slider').each(function () {
@@ -95,31 +96,34 @@ export default class Slick {
             const $prev = $section.find('.slick__prev');
             const $next = $section.find('.slick__next');
             const $preview = $section.find('.single-gallery-preview');
-            $slider.slick({
+            const param = {
                 slidesToShow: 1,
                 arrows: true,
                 prevArrow: $prev,
                 nextArrow: $next,
                 dots: false,
-                asNavFor: $preview,
-            });
-            $preview.slick({
-                slidesToShow: 4,
-                slidesToScroll: 1,
-                asNavFor: $slider,
-                dots: false,
-                centerMode: false,
-                focusOnSelect: true,
-                arrows: false,
-                responsive: [
-                    {
-                        breakpoint: 601,
-                        settings: {
-                            slidesToShow: 3
+            };
+            if ($preview.length > 0) {
+                $preview.slick({
+                    slidesToShow: 4,
+                    slidesToScroll: 1,
+                    asNavFor: $slider,
+                    dots: false,
+                    centerMode: false,
+                    focusOnSelect: true,
+                    arrows: false,
+                    responsive: [
+                        {
+                            breakpoint: 601,
+                            settings: {
+                                slidesToShow: 3
+                            }
                         }
-                    }
-                ]
-            });
+                    ]
+                });
+                param.asNavFor = $preview;
+            }
+            $slider.slick(param);
         });
     }
 }
