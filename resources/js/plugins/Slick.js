@@ -62,6 +62,13 @@ export default class Slick {
             const $slider = $(this);
             const $prev = $(this).closest('section').find('.slick__prev');
             const $next = $(this).closest('section').find('.slick__next');
+            console.log($slider.find('div'))
+            console.log($slider.find('> *').length)
+            if($slider.find('> *').length < 4){
+                $prev.remove();
+                $next.remove();
+                return;
+            }
             $slider.slick({
                 slidesToShow: 3,
                 arrows: true,
