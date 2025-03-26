@@ -108,6 +108,11 @@ export default class Application {
     }
 
     mainProductTrigger() {
+        this.$doc.on('click', '.main-product-box__item', function (e) {
+            e.preventDefault();
+            const $t = $(this);
+            window.location.href = $t.attr('href');
+        });
         this.$doc.on('click', '.main-product', function (e) {
             e.preventDefault();
             const $t = $(this);

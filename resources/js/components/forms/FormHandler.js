@@ -141,10 +141,6 @@ export default class FormHandler {
     }
 
     sendRequest(options) {
-        if (this.$document.find('body').hasClass('loading')) {
-            showMsg(errorString);
-            return;
-        }
         this.showPreloader();
         this.$document.find('body').addClass('loading').addClass('sending-form');
         $.ajax(options).done((response) => {
@@ -156,38 +152,18 @@ export default class FormHandler {
                 if (isJson) {
                     const data = JSON.parse(response);
                     const message = data.msg || '';
-                    const session_id = data.session_id || '';
                     const text = data.msg_text || '';
                     const type = data.type || '';
                     const url = data.url || '';
                     const reload = data.reload || '';
-                    const html = data.step_html || '';
                     if (message) {
                         this.showMessage(message, type, text, url);
-                    }else {
+                    } else {
                         if (url) {
                             showPreloader();
                             window.location.href = url;
                             return;
                         }
-                    }
-                    if (html) {
-                        this.$document.find('.book-render').html(html);
-                        selectrickInit();
-                        if (this.$document.find('#calendarDays')) {
-                            const book = new BookForm();
-                            book.calendarInit();
-                        }
-                        $('html, body').animate({
-                            scrollTop: this.$document.find('.book-render').offset().top
-                        });
-                        showNotices();
-                        initTelMask();
-                    }
-
-                    if (session_id && publishableKey !== '0') {
-                        const stripe = Stripe(publishableKey);
-                        return stripe.redirectToCheckout({sessionId: session_id});
                     }
                     if (reload === 'true') {
                         if (message) {
@@ -233,7 +209,7 @@ export default class FormHandler {
         $modal.find('.modal__text').html(text);
 
         $.fancybox.open($modal, {
-            afterClose: function() { // Виконати після закриття модального вікна
+            afterClose: function () {
                 if (url) {
                     window.location.href = url;
                 }

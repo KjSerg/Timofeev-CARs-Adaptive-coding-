@@ -24452,6 +24452,11 @@ var Application = /*#__PURE__*/function () {
   }, {
     key: "mainProductTrigger",
     value: function mainProductTrigger() {
+      this.$doc.on('click', '.main-product-box__item', function (e) {
+        e.preventDefault();
+        var $t = $(this);
+        window.location.href = $t.attr('href');
+      });
       this.$doc.on('click', '.main-product', function (e) {
         e.preventDefault();
         var $t = $(this);
@@ -24636,10 +24641,6 @@ var FormHandler = /*#__PURE__*/function () {
     key: "sendRequest",
     value: function sendRequest(options) {
       var _this2 = this;
-      if (this.$document.find('body').hasClass('loading')) {
-        (0,_plugins_fancybox_init__WEBPACK_IMPORTED_MODULE_3__.showMsg)(errorString);
-        return;
-      }
       this.showPreloader();
       this.$document.find('body').addClass('loading').addClass('sending-form');
       $.ajax(options).done(function (response) {
@@ -24651,12 +24652,10 @@ var FormHandler = /*#__PURE__*/function () {
           if (isJson) {
             var data = JSON.parse(response);
             var message = data.msg || '';
-            var session_id = data.session_id || '';
             var text = data.msg_text || '';
             var type = data.type || '';
             var url = data.url || '';
             var reload = data.reload || '';
-            var html = data.step_html || '';
             if (message) {
               _this2.showMessage(message, type, text, url);
             } else {
@@ -24665,25 +24664,6 @@ var FormHandler = /*#__PURE__*/function () {
                 window.location.href = url;
                 return;
               }
-            }
-            if (html) {
-              _this2.$document.find('.book-render').html(html);
-              (0,_plugins_selectric_init__WEBPACK_IMPORTED_MODULE_2__.selectrickInit)();
-              if (_this2.$document.find('#calendarDays')) {
-                var book = new BookForm();
-                book.calendarInit();
-              }
-              $('html, body').animate({
-                scrollTop: _this2.$document.find('.book-render').offset().top
-              });
-              (0,_plugins_fancybox_init__WEBPACK_IMPORTED_MODULE_3__.showNotices)();
-              (0,_number_input__WEBPACK_IMPORTED_MODULE_4__.initTelMask)();
-            }
-            if (session_id && publishableKey !== '0') {
-              var stripe = Stripe(publishableKey);
-              return stripe.redirectToCheckout({
-                sessionId: session_id
-              });
             }
             if (reload === 'true') {
               if (message) {
@@ -24731,7 +24711,6 @@ var FormHandler = /*#__PURE__*/function () {
       $modal.find('.modal__text').html(text);
       $.fancybox.open($modal, {
         afterClose: function afterClose() {
-          // Виконати після закриття модального вікна
           if (url) {
             window.location.href = url;
           }
