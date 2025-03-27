@@ -24747,9 +24747,14 @@ function setDefaultImage(preview) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   catalogFilterInit: () => (/* binding */ catalogFilterInit)
+/* harmony export */   catalogFilterInit: () => (/* binding */ catalogFilterInit),
+/* harmony export */   renderCatalog: () => (/* binding */ renderCatalog)
 /* harmony export */ });
+/* harmony import */ var _plugins_fancybox_init__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../plugins/_fancybox-init */ "./resources/js/plugins/_fancybox-init.js");
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+var parser = new DOMParser();
+var loading = false;
 var catalogFilterInit = function catalogFilterInit() {
   $(document).on('change', 'input[data-name]', function (e) {
     var $this = $(this);
@@ -24792,6 +24797,37 @@ var catalogFilterInit = function catalogFilterInit() {
       $(document).find('.catalog-filter-item').removeClass('active');
       $item.addClass('active');
     }
+  });
+  $(document).on('submit', '.filter-js', function (e) {
+    e.preventDefault();
+    var $t = $(this);
+    var url = $t.attr('action');
+    var serialize = $t.serializeArray();
+    $t.addClass('not-active');
+    renderCatalog(url, serialize);
+  });
+};
+var renderCatalog = function renderCatalog(url) {
+  var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  if (loading) return;
+  loading = true;
+  $.ajax({
+    type: "GET",
+    url: url,
+    processData: false,
+    contentType: false,
+    data: data
+  }).done(function (response) {
+    var $r = $(parser.parseFromString(response, "text/html"));
+    var $pagination = $r.find('.pagination-js');
+    var $catalog = $r.find('.container-js');
+    $(document).find('.pagination-js').html($pagination.html());
+    $(document).find('.container-js').html($catalog.html());
+    $(document).find('.filter-js').removeClass('not-active');
+    loading = false;
+  }).fail(function (r) {
+    (0,_plugins_fancybox_init__WEBPACK_IMPORTED_MODULE_0__.showMsg)("error: " + r);
+    window.location.reload();
   });
 };
 

@@ -22,6 +22,12 @@
     margin-bottom: 4rem;
     border-radius: 2.2rem;
     background:  #16141B;
+    &.not-active{
+      opacity: 1!important;
+      .catalog-filter-item-list{
+        pointer-events: none!important;
+      }
+    }
     &-label{
       position: relative;
       margin-right: 2rem;
@@ -47,6 +53,9 @@
         align-items: center;
         flex-shrink: 0;
         flex-grow: 0;
+        background: none;
+        border: none;
+        outline: none;
       }
       input{
         padding-left: 6rem;

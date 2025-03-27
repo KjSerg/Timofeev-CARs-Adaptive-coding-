@@ -1,3 +1,7 @@
+import {showMsg} from "../../plugins/_fancybox-init";
+
+const parser = new DOMParser();
+let loading = false;
 export const catalogFilterInit = () => {
     $(document).on('change', 'input[data-name]', function (e) {
         const $this = $(this);
@@ -21,9 +25,9 @@ export const catalogFilterInit = () => {
                 values.push($input.val());
             }
         });
-        if(values.length === 0){
+        if (values.length === 0) {
             $(document).find('.catalog-filter-item').removeClass('current');
-        }else {
+        } else {
             $item.addClass('current');
         }
         $counter.text(values.length);
@@ -32,14 +36,45 @@ export const catalogFilterInit = () => {
     });
     $(document).on('click', '.catalog-filter-item__head', function (e) {
         e.preventDefault();
-        const $t =  $(this);
+        const $t = $(this);
         const $item = $t.closest('.catalog-filter-item');
-        if($item.hasClass('active')){
+        if ($item.hasClass('active')) {
             $item.removeClass('active');
-        }else{
+        } else {
             $(document).find('.catalog-filter-item').removeClass('active');
             $item.addClass('active');
         }
 
+    });
+    $(document).on('submit', '.filter-js', function (e) {
+        e.preventDefault();
+        const $t = $(this);
+        const url = $t.attr('action');
+        const serialize = $t.serializeArray();
+        $t.addClass('not-active');
+        renderCatalog(url, serialize);
+    });
+}
+
+export const renderCatalog = (url, data = {}) => {
+    if (loading) return;
+    loading = true;
+    $.ajax({
+        type: "GET",
+        url: url,
+        processData: false,
+        contentType: false,
+        data: data,
+    }).done((response) => {
+        const $r = $(parser.parseFromString(response, "text/html"));
+        const $pagination = $r.find('.pagination-js');
+        const $catalog = $r.find('.container-js');
+        $(document).find('.pagination-js').html($pagination.html());
+        $(document).find('.container-js').html($catalog.html());
+        $(document).find('.filter-js').removeClass('not-active');
+        loading = false;
+    }).fail((r) => {
+        showMsg("error: " + r);
+        window.location.reload();
     });
 }
