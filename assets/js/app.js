@@ -24751,7 +24751,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   renderCatalog: () => (/* binding */ renderCatalog)
 /* harmony export */ });
 /* harmony import */ var _plugins_fancybox_init__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../plugins/_fancybox-init */ "./resources/js/plugins/_fancybox-init.js");
+/* harmony import */ var _plugins_selectric_init__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../plugins/_selectric-init */ "./resources/js/plugins/_selectric-init.js");
+/* harmony import */ var _utils_helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/_helpers */ "./resources/js/components/utils/_helpers.js");
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+
 
 var parser = new DOMParser();
 var loading = false;
@@ -24802,15 +24806,19 @@ var catalogFilterInit = function catalogFilterInit() {
     e.preventDefault();
     var $t = $(this);
     var url = $t.attr('action');
-    var serialize = $t.serializeArray();
+    var serialize = $t.serialize();
     $t.addClass('not-active');
     renderCatalog(url, serialize);
   });
 };
 var renderCatalog = function renderCatalog(url) {
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var addToHistory = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+  console.log(url);
+  console.log(data);
   if (loading) return;
   loading = true;
+  (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_2__.showPreloader)();
   $.ajax({
     type: "GET",
     url: url,
@@ -24821,14 +24829,29 @@ var renderCatalog = function renderCatalog(url) {
     var $r = $(parser.parseFromString(response, "text/html"));
     var $pagination = $r.find('.pagination-js');
     var $catalog = $r.find('.container-js');
+    var $filter = $r.find('.catalog-filter');
     $(document).find('.pagination-js').html($pagination.html());
     $(document).find('.container-js').html($catalog.html());
     $(document).find('.filter-js').removeClass('not-active');
     loading = false;
+    if (addToHistory) {
+      var pushStateURL = url;
+      if (typeof data === 'string') {
+        pushStateURL += '?' + data;
+      }
+      history.pushState({}, "", pushStateURL);
+    } else {
+      $(document).find('.catalog-filter').html($filter.html());
+      (0,_plugins_selectric_init__WEBPACK_IMPORTED_MODULE_1__.selectrickInit)();
+    }
+    (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_2__.hidePreloader)();
   }).fail(function (r) {
     (0,_plugins_fancybox_init__WEBPACK_IMPORTED_MODULE_0__.showMsg)("error: " + r);
     window.location.reload();
   });
+};
+window.onpopstate = function (event) {
+  renderCatalog(document.location, '', false);
 };
 
 /***/ }),

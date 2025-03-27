@@ -1,4 +1,6 @@
 import {showMsg} from "../../plugins/_fancybox-init";
+import {selectrickInit} from "../../plugins/_selectric-init";
+import {hidePreloader, showPreloader} from "../utils/_helpers";
 
 const parser = new DOMParser();
 let loading = false;
@@ -50,15 +52,18 @@ export const catalogFilterInit = () => {
         e.preventDefault();
         const $t = $(this);
         const url = $t.attr('action');
-        const serialize = $t.serializeArray();
+        const serialize = $t.serialize();
         $t.addClass('not-active');
         renderCatalog(url, serialize);
     });
 }
 
-export const renderCatalog = (url, data = {}) => {
+export const renderCatalog = (url, data = {}, addToHistory = true) => {
+    console.log(url)
+    console.log(data)
     if (loading) return;
     loading = true;
+    showPreloader();
     $.ajax({
         type: "GET",
         url: url,
@@ -69,12 +74,28 @@ export const renderCatalog = (url, data = {}) => {
         const $r = $(parser.parseFromString(response, "text/html"));
         const $pagination = $r.find('.pagination-js');
         const $catalog = $r.find('.container-js');
+        const $filter = $r.find('.catalog-filter');
         $(document).find('.pagination-js').html($pagination.html());
         $(document).find('.container-js').html($catalog.html());
         $(document).find('.filter-js').removeClass('not-active');
         loading = false;
+        if (addToHistory) {
+            let pushStateURL = url;
+            if (typeof data === 'string') {
+                pushStateURL += '?' + data;
+            }
+            history.pushState({}, "", pushStateURL);
+        } else {
+            $(document).find('.catalog-filter').html($filter.html());
+            selectrickInit();
+        }
+        hidePreloader();
     }).fail((r) => {
         showMsg("error: " + r);
         window.location.reload();
     });
 }
+
+window.onpopstate = (event) => {
+    renderCatalog(document.location, '', false);
+};
