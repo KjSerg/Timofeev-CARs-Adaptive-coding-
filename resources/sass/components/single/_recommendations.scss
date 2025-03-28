@@ -37,6 +37,7 @@
     }
     &:not(.slick-slider){
       width: 100%;
+      gap: 2.2rem;
       & > *{
         @media (max-width: 1024px) {
           width: 50%;
