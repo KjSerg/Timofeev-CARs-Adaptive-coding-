@@ -11,6 +11,12 @@
       margin: auto;
       margin-top: 1.2rem;
     }
+    .repair-article{
+
+      margin: auto;
+      margin-top: 1.2rem;
+      width: 98%;
+    }
 
     &-wrapper {
       position: relative;
@@ -30,6 +36,7 @@
       }
     }
     &:not(.slick-slider){
+      width: 100%;
       & > *{
         @media (max-width: 1024px) {
           width: 50%;

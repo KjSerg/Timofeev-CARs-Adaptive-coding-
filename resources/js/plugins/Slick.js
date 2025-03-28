@@ -62,8 +62,6 @@ export default class Slick {
             const $slider = $(this);
             const $prev = $(this).closest('section').find('.slick__prev');
             const $next = $(this).closest('section').find('.slick__next');
-            console.log($slider.find('div'))
-            console.log($slider.find('> *').length)
             if($slider.find('> *').length < 4){
                 $prev.remove();
                 $next.remove();
@@ -104,6 +102,7 @@ export default class Slick {
             const $next = $section.find('.slick__next');
             const $preview = $section.find('.single-gallery-preview');
             const param = {
+                lazyLoad: 'ondemand',
                 slidesToShow: 1,
                 arrows: true,
                 prevArrow: $prev,
@@ -112,6 +111,7 @@ export default class Slick {
             };
             if ($preview.length > 0) {
                 $preview.slick({
+                    lazyLoad: 'ondemand',
                     slidesToShow: 4,
                     slidesToScroll: 1,
                     asNavFor: $slider,
@@ -131,6 +131,14 @@ export default class Slick {
                 param.asNavFor = $preview;
             }
             $slider.slick(param);
+        });
+    }
+
+    gallerySliderRefresh() {
+        $(window).on('load', function () {
+            $(document).find('.single-gallery').each(function () {
+                $(this).slick('refresh');
+            });
         });
     }
 }

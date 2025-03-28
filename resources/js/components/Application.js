@@ -29,7 +29,16 @@ export default class Application {
 
     showLoaderOnClick() {
         this.$doc.on('click', 'a.show-load, .header a, .footer a', function (e) {
-            if (!$(this).attr('href').includes('#')) showPreloader();
+            let href = $(this).attr('href') || '';
+            let target = $(this).attr('target') || '';
+
+            let test = !href.includes('#') &&
+                !href.includes('tel') &&
+                !href.includes('mailto') &&
+                target !== '_blank';
+
+            if (test) showPreloader();
+
         });
     }
 
@@ -63,6 +72,7 @@ export default class Application {
             this.mainProductTrigger();
             const form = new FormHandler('.form-js');
             const slick = new Slick();
+            slick.gallerySliderRefresh();
         });
 
     }

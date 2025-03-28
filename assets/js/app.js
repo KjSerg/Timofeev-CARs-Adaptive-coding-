@@ -24369,7 +24369,10 @@ var Application = /*#__PURE__*/function () {
     key: "showLoaderOnClick",
     value: function showLoaderOnClick() {
       this.$doc.on('click', 'a.show-load, .header a, .footer a', function (e) {
-        if (!$(this).attr('href').includes('#')) (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.showPreloader)();
+        var href = $(this).attr('href') || '';
+        var target = $(this).attr('target') || '';
+        var test = !href.includes('#') && !href.includes('tel') && !href.includes('mailto') && target !== '_blank';
+        if (test) (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.showPreloader)();
       });
     }
   }, {
@@ -24407,6 +24410,7 @@ var Application = /*#__PURE__*/function () {
         _this2.mainProductTrigger();
         var form = new _forms_FormHandler__WEBPACK_IMPORTED_MODULE_7__["default"]('.form-js');
         var slick = new _plugins_Slick__WEBPACK_IMPORTED_MODULE_10__["default"]();
+        slick.gallerySliderRefresh();
       });
     }
   }, {
@@ -25485,8 +25489,6 @@ var Slick = /*#__PURE__*/function () {
         var $slider = $(this);
         var $prev = $(this).closest('section').find('.slick__prev');
         var $next = $(this).closest('section').find('.slick__next');
-        console.log($slider.find('div'));
-        console.log($slider.find('> *').length);
         if ($slider.find('> *').length < 4) {
           $prev.remove();
           $next.remove();
@@ -25522,6 +25524,7 @@ var Slick = /*#__PURE__*/function () {
         var $next = $section.find('.slick__next');
         var $preview = $section.find('.single-gallery-preview');
         var param = {
+          lazyLoad: 'ondemand',
           slidesToShow: 1,
           arrows: true,
           prevArrow: $prev,
@@ -25530,6 +25533,7 @@ var Slick = /*#__PURE__*/function () {
         };
         if ($preview.length > 0) {
           $preview.slick({
+            lazyLoad: 'ondemand',
             slidesToShow: 4,
             slidesToScroll: 1,
             asNavFor: $slider,
@@ -25547,6 +25551,15 @@ var Slick = /*#__PURE__*/function () {
           param.asNavFor = $preview;
         }
         $slider.slick(param);
+      });
+    }
+  }, {
+    key: "gallerySliderRefresh",
+    value: function gallerySliderRefresh() {
+      $(window).on('load', function () {
+        $(document).find('.single-gallery').each(function () {
+          $(this).slick('refresh');
+        });
       });
     }
   }]);
