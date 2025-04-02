@@ -91,8 +91,9 @@ export const renderCatalog = (url, data = {}, addToHistory = true) => {
         }
         hidePreloader();
     }).fail((r) => {
+        console.log(r);
         showMsg("error: " + r);
-        window.location.reload();
+        // window.location.reload();
     });
 }
 

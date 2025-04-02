@@ -24850,8 +24850,9 @@ var renderCatalog = function renderCatalog(url) {
     }
     (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_2__.hidePreloader)();
   }).fail(function (r) {
+    console.log(r);
     (0,_plugins_fancybox_init__WEBPACK_IMPORTED_MODULE_0__.showMsg)("error: " + r);
-    window.location.reload();
+    // window.location.reload();
   });
 };
 window.onpopstate = function (event) {
@@ -25658,6 +25659,7 @@ var selectrickInit = function selectrickInit() {
   var $select = $(document).find('.select').not('.selectric-init');
   $select.selectric();
   $select.addClass('selectric-init');
+  $select.closest('.catalog-filter-sort').addClass('active');
 };
 
 /***/ }),
