@@ -85,7 +85,7 @@
       &:hover{
         color: #E32A2F;
       }
-      @media (max-width: 450px) {
+      @media (max-width: 767px) {
         display: block;
         padding: 1rem;
         width: 100%;
@@ -94,11 +94,11 @@
     }
     li{
 
-      @media (max-width: 450px) {
+      @media (max-width: 767px) {
         width: 100%;
       }
       &:not(:last-child){
-        @media (max-width: 450px) {
+        @media (max-width: 767px) {
           border-bottom: 1px solid #fff;
         }
       }
@@ -108,7 +108,7 @@
       align-items: center;
       justify-content: center;
       gap: 4rem;
-      @media (max-width: 450px) {
+      @media (max-width: 767px) {
         flex-direction: column;
         padding: 2rem;
         gap: 0;
