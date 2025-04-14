@@ -369,6 +369,40 @@
 }
 
 .characteristics {
+  &-control{
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #2B292F;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    color: #E32A2F;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 3rem;
+    &--hide{
+      display: none;
+    }
+    .icon{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+  }
+  &.active{
+    .characteristics-control--show{
+      display: none;
+    }
+    .characteristics-control--hide{
+      display: flex;
+    }
+  }
   &__color {
     width: 2rem;
     height: 2rem;

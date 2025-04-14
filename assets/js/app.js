@@ -24417,7 +24417,7 @@ var Application = /*#__PURE__*/function () {
     key: "linkListener",
     value: function linkListener() {
       var t = this;
-      this.$doc.on('click', 'a[href*="#"]:not(.fancybox, .book-form__trigger)', function (e) {
+      this.$doc.on('click', 'a[href*="#"]:not(.fancybox, .accordion-head)', function (e) {
         e.preventDefault();
         var $t = $(this);
         var href = $t.attr('href');
