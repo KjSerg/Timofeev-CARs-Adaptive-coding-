@@ -1,4 +1,9 @@
 import 'slick-carousel';
+import $ from 'jquery';
+
+window.$ = $;
+window.jQuery = $;
+import '@fancyapps/fancybox';
 
 export default class Slick {
     constructor() {
@@ -62,7 +67,7 @@ export default class Slick {
             const $slider = $(this);
             const $prev = $(this).closest('section').find('.slick__prev');
             const $next = $(this).closest('section').find('.slick__next');
-            if($slider.find('> *').length < 4){
+            if ($slider.find('> *').length < 4) {
                 $prev.remove();
                 $next.remove();
                 return;
@@ -94,21 +99,27 @@ export default class Slick {
     }
 
     gallerySliderInit() {
-
         $(document).find('.single-gallery').each(function () {
+            var currentSlickIndex;
             const $slider = $(this);
             const $section = $slider.closest('section');
             const $prev = $section.find('.slick__prev');
             const $next = $section.find('.slick__next');
             const $preview = $section.find('.single-gallery-preview');
+
             const param = {
                 lazyLoad: 'ondemand',
                 slidesToShow: 1,
+                slidesToScroll: 1,
                 arrows: true,
                 prevArrow: $prev,
                 nextArrow: $next,
                 dots: false,
+                accessibility: true,
+                autoplay: false,
+                infinite: false
             };
+
             if ($preview.length > 0) {
                 $preview.slick({
                     lazyLoad: 'ondemand',
@@ -119,6 +130,7 @@ export default class Slick {
                     centerMode: false,
                     focusOnSelect: true,
                     arrows: false,
+                    infinite: false,
                     responsive: [
                         {
                             breakpoint: 601,
@@ -130,7 +142,9 @@ export default class Slick {
                 });
                 param.asNavFor = $preview;
             }
+
             $slider.slick(param);
+
         });
     }
 

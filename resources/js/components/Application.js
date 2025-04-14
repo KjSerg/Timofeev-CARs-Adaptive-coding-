@@ -36,7 +36,6 @@ export default class Application {
                 !href.includes('tel') &&
                 !href.includes('mailto') &&
                 target !== '_blank';
-
             if (test) showPreloader();
 
         });
@@ -52,7 +51,25 @@ export default class Application {
         });
     }
 
+    cutTextInit() {
+        this.$doc.find('.cut-text-js').each(function () {
+            let $wrap = $(this);
+            let $text = $wrap.find('.text');
+            let $b = $wrap.find('.text-hidden__button');
+            $text.css('height', 'auto');
+            let textHeight = $text.height();
+            $text.removeAttr('style');
+            if (textHeight <= $text.height()) {
+                $b.hide();
+            } else {
+                $b.show();
+            }
+        });
+    }
+
     initComponents() {
+        let t = this;
+
         this.$doc.ready(() => {
             showNotices();
             burger();
@@ -67,6 +84,7 @@ export default class Application {
             copyLink();
             showText();
             hoveredModel();
+            t.cutTextInit();
             this.showLoaderOnClick();
             this.linkListener();
             this.mainProductTrigger();
@@ -80,7 +98,7 @@ export default class Application {
 
     linkListener() {
         const t = this;
-        this.$doc.on('click', 'a[href*="#"]:not(.fancybox, .accordion-head)', function (e) {
+        this.$doc.on('click', 'a[href*="#"]:not(.fancybox, .accordion-head, .single-gallery__image, .cars-head__link)', function (e) {
             e.preventDefault();
             const $t = $(this);
             const href = $t.attr('href');

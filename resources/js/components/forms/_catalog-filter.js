@@ -59,8 +59,7 @@ export const catalogFilterInit = () => {
 }
 
 export const renderCatalog = (url, data = {}, addToHistory = true) => {
-    console.log(url)
-    console.log(data)
+    if($(document).find('.container-js').length === 0) return;
     if (loading) return;
     loading = true;
     showPreloader();

@@ -6,6 +6,8 @@ import '@fancyapps/fancybox';
 
 export const fancyboxInit = () => {
     $('[data-fancybox]').fancybox({});
+
+
     $(document).on('click', '.fancybox', function (e) {
         e.preventDefault();
         const $t = $(this);

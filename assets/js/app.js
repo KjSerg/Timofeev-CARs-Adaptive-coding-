@@ -24388,9 +24388,27 @@ var Application = /*#__PURE__*/function () {
       });
     }
   }, {
+    key: "cutTextInit",
+    value: function cutTextInit() {
+      this.$doc.find('.cut-text-js').each(function () {
+        var $wrap = $(this);
+        var $text = $wrap.find('.text');
+        var $b = $wrap.find('.text-hidden__button');
+        $text.css('height', 'auto');
+        var textHeight = $text.height();
+        $text.removeAttr('style');
+        if (textHeight <= $text.height()) {
+          $b.hide();
+        } else {
+          $b.show();
+        }
+      });
+    }
+  }, {
     key: "initComponents",
     value: function initComponents() {
       var _this2 = this;
+      var t = this;
       this.$doc.ready(function () {
         (0,_plugins_fancybox_init__WEBPACK_IMPORTED_MODULE_5__.showNotices)();
         (0,_ui_burger__WEBPACK_IMPORTED_MODULE_1__.burger)();
@@ -24405,6 +24423,7 @@ var Application = /*#__PURE__*/function () {
         (0,_ui_copy_link__WEBPACK_IMPORTED_MODULE_12__.copyLink)();
         (0,_ui_show_text__WEBPACK_IMPORTED_MODULE_13__.showText)();
         (0,_ui_models__WEBPACK_IMPORTED_MODULE_14__.hoveredModel)();
+        t.cutTextInit();
         _this2.showLoaderOnClick();
         _this2.linkListener();
         _this2.mainProductTrigger();
@@ -24417,7 +24436,7 @@ var Application = /*#__PURE__*/function () {
     key: "linkListener",
     value: function linkListener() {
       var t = this;
-      this.$doc.on('click', 'a[href*="#"]:not(.fancybox, .accordion-head)', function (e) {
+      this.$doc.on('click', 'a[href*="#"]:not(.fancybox, .accordion-head, .single-gallery__image, .cars-head__link)', function (e) {
         e.preventDefault();
         var $t = $(this);
         var href = $t.attr('href');
@@ -24818,8 +24837,7 @@ var catalogFilterInit = function catalogFilterInit() {
 var renderCatalog = function renderCatalog(url) {
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var addToHistory = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-  console.log(url);
-  console.log(data);
+  if ($(document).find('.container-js').length === 0) return;
   if (loading) return;
   loading = true;
   (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_2__.showPreloader)();
@@ -25134,6 +25152,20 @@ var showText = function showText() {
     var $t = $(this);
     var hideText = $t.attr('data-hide-text');
     var showText = $t.attr('data-show-text');
+    if ($t.closest('.cut-text-js').length > 0) {
+      var $wrap = $t.closest('.cut-text-js');
+      var $text = $wrap.find('.text');
+      if ($t.hasClass('active')) {
+        $t.find('.button-text').text(showText);
+        $t.removeClass('active');
+        $text.removeAttr('style');
+      } else {
+        $t.find('.button-text').text(hideText);
+        $t.addClass('active');
+        $text.css('height', 'auto');
+      }
+      return;
+    }
     if ($t.hasClass('active')) {
       $t.find('.button-text').text(showText);
       $t.removeClass('active');
@@ -25424,13 +25456,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var slick_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! slick-carousel */ "./node_modules/slick-carousel/slick/slick.js");
 /* harmony import */ var slick_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(slick_carousel__WEBPACK_IMPORTED_MODULE_0__);
-/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _fancyapps_fancybox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fancyapps/fancybox */ "./node_modules/@fancyapps/fancybox/dist/jquery.fancybox.js");
+/* harmony import */ var _fancyapps_fancybox__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_fancyapps_fancybox__WEBPACK_IMPORTED_MODULE_2__);
+/* provided dependency */ var __webpack_provided_window_dot_jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
+
+window.$ = (jquery__WEBPACK_IMPORTED_MODULE_1___default());
+__webpack_provided_window_dot_jQuery = (jquery__WEBPACK_IMPORTED_MODULE_1___default());
 
 var Slick = /*#__PURE__*/function () {
   function Slick() {
@@ -25447,10 +25487,10 @@ var Slick = /*#__PURE__*/function () {
   }, {
     key: "reviewSliderInit",
     value: function reviewSliderInit() {
-      $(document).find('.reviews-slider').each(function () {
-        var $slider = $(this);
-        var $prev = $(this).closest('section').find('.slick__prev');
-        var $next = $(this).closest('section').find('.slick__next');
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()(document).find('.reviews-slider').each(function () {
+        var $slider = jquery__WEBPACK_IMPORTED_MODULE_1___default()(this);
+        var $prev = jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).closest('section').find('.slick__prev');
+        var $next = jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).closest('section').find('.slick__next');
         $slider.slick({
           slidesToShow: 3,
           arrows: true,
@@ -25470,10 +25510,10 @@ var Slick = /*#__PURE__*/function () {
           }]
         });
       });
-      $(document).find('.review-car-slider').each(function () {
-        var $slider = $(this);
-        var $prev = $(this).closest('section').find('.slick__prev');
-        var $next = $(this).closest('section').find('.slick__next');
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()(document).find('.review-car-slider').each(function () {
+        var $slider = jquery__WEBPACK_IMPORTED_MODULE_1___default()(this);
+        var $prev = jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).closest('section').find('.slick__prev');
+        var $next = jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).closest('section').find('.slick__next');
         $slider.slick({
           slidesToShow: 1,
           arrows: true,
@@ -25486,10 +25526,10 @@ var Slick = /*#__PURE__*/function () {
   }, {
     key: "recommendationsSliderInit",
     value: function recommendationsSliderInit() {
-      $(document).find('.recommendations-slider').each(function () {
-        var $slider = $(this);
-        var $prev = $(this).closest('section').find('.slick__prev');
-        var $next = $(this).closest('section').find('.slick__next');
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()(document).find('.recommendations-slider').each(function () {
+        var $slider = jquery__WEBPACK_IMPORTED_MODULE_1___default()(this);
+        var $prev = jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).closest('section').find('.slick__prev');
+        var $next = jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).closest('section').find('.slick__next');
         if ($slider.find('> *').length < 4) {
           $prev.remove();
           $next.remove();
@@ -25518,8 +25558,9 @@ var Slick = /*#__PURE__*/function () {
   }, {
     key: "gallerySliderInit",
     value: function gallerySliderInit() {
-      $(document).find('.single-gallery').each(function () {
-        var $slider = $(this);
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()(document).find('.single-gallery').each(function () {
+        var currentSlickIndex;
+        var $slider = jquery__WEBPACK_IMPORTED_MODULE_1___default()(this);
         var $section = $slider.closest('section');
         var $prev = $section.find('.slick__prev');
         var $next = $section.find('.slick__next');
@@ -25527,10 +25568,14 @@ var Slick = /*#__PURE__*/function () {
         var param = {
           lazyLoad: 'ondemand',
           slidesToShow: 1,
+          slidesToScroll: 1,
           arrows: true,
           prevArrow: $prev,
           nextArrow: $next,
-          dots: false
+          dots: false,
+          accessibility: true,
+          autoplay: false,
+          infinite: false
         };
         if ($preview.length > 0) {
           $preview.slick({
@@ -25542,6 +25587,7 @@ var Slick = /*#__PURE__*/function () {
             centerMode: false,
             focusOnSelect: true,
             arrows: false,
+            infinite: false,
             responsive: [{
               breakpoint: 601,
               settings: {
@@ -25557,9 +25603,9 @@ var Slick = /*#__PURE__*/function () {
   }, {
     key: "gallerySliderRefresh",
     value: function gallerySliderRefresh() {
-      $(window).on('load', function () {
-        $(document).find('.single-gallery').each(function () {
-          $(this).slick('refresh');
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()(window).on('load', function () {
+        jquery__WEBPACK_IMPORTED_MODULE_1___default()(document).find('.single-gallery').each(function () {
+          jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).slick('refresh');
         });
       });
     }
