@@ -8,7 +8,7 @@ import {selectrickInit} from "../plugins/_selectric-init";
 import FormHandler from "./forms/FormHandler";
 import {toggler} from "./ui/_togglers";
 import {tabs} from "./ui/_tabs";
-import Slick from "../plugins/Slick";
+import Slick, {initGallery} from "../plugins/Slick";
 import {catalogFilterInit} from "./forms/_catalog-filter";
 import {copyLink} from "./ui/_copy-link";
 import {showText} from "./ui/_show-text";
@@ -84,6 +84,7 @@ export default class Application {
             copyLink();
             showText();
             hoveredModel();
+            initGallery();
             t.cutTextInit();
             this.showLoaderOnClick();
             this.linkListener();

@@ -1,9 +1,17 @@
 import 'slick-carousel';
-import $ from 'jquery';
 
-window.$ = $;
-window.jQuery = $;
-import '@fancyapps/fancybox';
+import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import 'photoswipe/style.css';
+import PhotoSwipe from 'photoswipe';
+
+export const initGallery = () => {
+    const lightbox = new PhotoSwipeLightbox({
+        gallery: '.single-gallery',
+        children: 'a', showHideAnimationType: 'fade',
+        pswpModule: PhotoSwipe
+    });
+    lightbox.init();
+};
 
 export default class Slick {
     constructor() {

@@ -25,6 +25,7 @@
     "aos": "^2.3.4",
     "inputmask": "^5.0.9",
     "instead": "^1.0.3",
+    "photoswipe": "^5.4.4",
     "selectric": "^1.13.0"
   }
 }

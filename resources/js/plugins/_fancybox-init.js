@@ -5,7 +5,9 @@ window.jQuery = $;
 import '@fancyapps/fancybox';
 
 export const fancyboxInit = () => {
-    $('[data-fancybox]').fancybox({});
+    $('[data-fancybox]').fancybox({
+        placeFocusBack: false,backFocus: false
+    });
 
 
     $(document).on('click', '.fancybox', function (e) {
