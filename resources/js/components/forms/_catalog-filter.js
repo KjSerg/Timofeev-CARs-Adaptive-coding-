@@ -59,10 +59,11 @@ export const catalogFilterInit = () => {
 }
 
 export const renderCatalog = (url, data = {}, addToHistory = true) => {
-    if($(document).find('.container-js').length === 0) return;
+    if ($(document).find('.container-js').length === 0) return;
     if (loading) return;
     loading = true;
-    showPreloader();
+    console.log(addToHistory)
+    if (addToHistory) showPreloader();
     $.ajax({
         type: "GET",
         url: url,
@@ -97,5 +98,6 @@ export const renderCatalog = (url, data = {}, addToHistory = true) => {
 }
 
 window.onpopstate = (event) => {
+    console.log(event)
     renderCatalog(document.location, '', false);
 };

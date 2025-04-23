@@ -3,6 +3,7 @@ import 'slick-carousel';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
 import PhotoSwipe from 'photoswipe';
+import {catalogFilterInit} from "../components/forms/_catalog-filter";
 
 export const initGallery = () => {
     const lightbox = new PhotoSwipeLightbox({
@@ -150,15 +151,24 @@ export default class Slick {
                 });
                 param.asNavFor = $preview;
             }
-
-            $slider.slick(param);
+            if ($slider.find('> *').length > 1) {
+                $slider.slick(param);
+            }else {
+                $slider.find('img').css('opacity', '1');
+                $prev.hide();
+                $next.hide();
+            }
 
         });
     }
 
     gallerySliderRefresh() {
         $(window).on('load', function () {
-            $(document).find('.single-gallery').each(function () {
+            $(document).find('.single-gallery.slick-slider').each(function () {
+                $(this).slick('refresh');
+            });
+            $(document).find('.single-gallery-preview.slick-slider').each(function () {
+                console.log($(this))
                 $(this).slick('refresh');
             });
         });

@@ -33852,7 +33852,10 @@ var Application = /*#__PURE__*/function () {
         var href = $(this).attr('href') || '';
         var target = $(this).attr('target') || '';
         var test = !href.includes('#') && !href.includes('tel') && !href.includes('mailto') && target !== '_blank';
-        if (test) (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.showPreloader)();
+        if (test) {
+          (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.showPreloader)();
+          setTimeout(_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.hidePreloader, 3000);
+        }
       });
     }
   }, {
@@ -33890,6 +33893,7 @@ var Application = /*#__PURE__*/function () {
       var _this2 = this;
       var t = this;
       this.$doc.ready(function () {
+        (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.hidePreloader)();
         (0,_plugins_fancybox_init__WEBPACK_IMPORTED_MODULE_5__.showNotices)();
         (0,_ui_burger__WEBPACK_IMPORTED_MODULE_1__.burger)();
         (0,_ui_togglers__WEBPACK_IMPORTED_MODULE_8__.toggler)();
@@ -34321,7 +34325,8 @@ var renderCatalog = function renderCatalog(url) {
   if ($(document).find('.container-js').length === 0) return;
   if (loading) return;
   loading = true;
-  (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_2__.showPreloader)();
+  console.log(addToHistory);
+  if (addToHistory) (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_2__.showPreloader)();
   $.ajax({
     type: "GET",
     url: url,
@@ -34355,6 +34360,7 @@ var renderCatalog = function renderCatalog(url) {
   });
 };
 window.onpopstate = function (event) {
+  console.log(event);
   renderCatalog(document.location, '', false);
 };
 
@@ -34941,6 +34947,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var photoswipe_lightbox__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! photoswipe/lightbox */ "./node_modules/photoswipe/dist/photoswipe-lightbox.esm.js");
 /* harmony import */ var photoswipe_style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! photoswipe/style.css */ "./node_modules/photoswipe/dist/photoswipe.css");
 /* harmony import */ var photoswipe__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! photoswipe */ "./node_modules/photoswipe/dist/photoswipe.esm.js");
+/* harmony import */ var _components_forms_catalog_filter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/forms/_catalog-filter */ "./resources/js/components/forms/_catalog-filter.js");
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
@@ -34948,6 +34955,7 @@ function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = 
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
 
 
 
@@ -35086,14 +35094,24 @@ var Slick = /*#__PURE__*/function () {
           });
           param.asNavFor = $preview;
         }
-        $slider.slick(param);
+        if ($slider.find('> *').length > 1) {
+          $slider.slick(param);
+        } else {
+          $slider.find('img').css('opacity', '1');
+          $prev.hide();
+          $next.hide();
+        }
       });
     }
   }, {
     key: "gallerySliderRefresh",
     value: function gallerySliderRefresh() {
       $(window).on('load', function () {
-        $(document).find('.single-gallery').each(function () {
+        $(document).find('.single-gallery.slick-slider').each(function () {
+          $(this).slick('refresh');
+        });
+        $(document).find('.single-gallery-preview.slick-slider').each(function () {
+          console.log($(this));
           $(this).slick('refresh');
         });
       });

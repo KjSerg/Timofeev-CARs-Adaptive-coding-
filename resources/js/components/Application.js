@@ -1,4 +1,4 @@
-import {detectBrowser, isHorizontal, isMobile, showPreloader} from "./utils/_helpers";
+import {detectBrowser, hidePreloader, isHorizontal, isMobile, showPreloader} from "./utils/_helpers";
 import {burger} from "./ui/_burger";
 import {accordion} from "./ui/_accardion";
 import {numberInput} from "./forms/_number-input";
@@ -9,7 +9,7 @@ import FormHandler from "./forms/FormHandler";
 import {toggler} from "./ui/_togglers";
 import {tabs} from "./ui/_tabs";
 import Slick, {initGallery} from "../plugins/Slick";
-import {catalogFilterInit} from "./forms/_catalog-filter";
+import {catalogFilterInit, renderCatalog} from "./forms/_catalog-filter";
 import {copyLink} from "./ui/_copy-link";
 import {showText} from "./ui/_show-text";
 import {hoveredModel} from "./ui/_models";
@@ -31,12 +31,14 @@ export default class Application {
         this.$doc.on('click', 'a.show-load, .header a, .footer a', function (e) {
             let href = $(this).attr('href') || '';
             let target = $(this).attr('target') || '';
-
             let test = !href.includes('#') &&
                 !href.includes('tel') &&
                 !href.includes('mailto') &&
                 target !== '_blank';
-            if (test) showPreloader();
+            if (test) {
+                showPreloader();
+                setTimeout(hidePreloader, 3000);
+            }
 
         });
     }
@@ -71,6 +73,7 @@ export default class Application {
         let t = this;
 
         this.$doc.ready(() => {
+            hidePreloader();
             showNotices();
             burger();
             toggler();
