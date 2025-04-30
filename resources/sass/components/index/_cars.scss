@@ -138,6 +138,23 @@
     }
   }
 
+  .single-main-price__text{
+    margin-top: auto;
+    padding-top: 1rem;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 2rem;
+  }
+
+  .hint__text{
+    width: 25rem;
+    @media (max-width: 1200px) {
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+    }
+  }
+
   &-data {
     padding: 2.4rem;
     @media (max-width: 1024px) {

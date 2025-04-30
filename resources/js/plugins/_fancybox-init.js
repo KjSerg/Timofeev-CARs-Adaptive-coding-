@@ -5,11 +5,10 @@ window.jQuery = $;
 import '@fancyapps/fancybox';
 
 export const fancyboxInit = () => {
+    modalLanguageInit();
     $('[data-fancybox]').fancybox({
-        placeFocusBack: false,backFocus: false
+        placeFocusBack: false, backFocus: false
     });
-
-
     $(document).on('click', '.fancybox', function (e) {
         e.preventDefault();
         const $t = $(this);
@@ -23,7 +22,14 @@ export const fancyboxInit = () => {
         e.preventDefault();
         $.fancybox.close();
     });
+
 };
+
+function modalLanguageInit(){
+    const $modal = $(document).find('#modal-language');
+    if($modal.length === 0) return;
+    $.fancybox.open($modal);
+}
 
 export function showMsg(msg = '', title = '') {
     const selector = '#dialog';
@@ -35,7 +41,7 @@ export function showMsg(msg = '', title = '') {
     $modal.find('.modal__title').html(title);
     $modal.find('.modal__text').html(msg);
     $.fancybox.open($modal);
-    setTimeout(function (){
+    setTimeout(function () {
         $.fancybox.close();
     }, 3000);
 

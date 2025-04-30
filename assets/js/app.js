@@ -33909,6 +33909,7 @@ var Application = /*#__PURE__*/function () {
         (0,_ui_models__WEBPACK_IMPORTED_MODULE_14__.hoveredModel)();
         (0,_plugins_Slick__WEBPACK_IMPORTED_MODULE_10__.initGallery)();
         t.cutTextInit();
+        t.loadMore();
         _this2.showLoaderOnClick();
         _this2.linkListener();
         _this2.mainProductTrigger();
@@ -33977,6 +33978,34 @@ var Application = /*#__PURE__*/function () {
         if (!div.is(e.target) && div.has(e.target).length === 0) {
           div.removeClass('active');
         }
+      });
+    }
+  }, {
+    key: "loadMore",
+    value: function loadMore() {
+      var load = false;
+      var parser = new DOMParser();
+      $(document).on('click', '.button-load-more', function (e) {
+        e.preventDefault();
+        var $t = $(this);
+        var href = $t.attr('href');
+        if (load) return;
+        var $pagination = $(document).find('.pagination-container');
+        (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.showPreloader)();
+        $pagination.addClass('not-active');
+        $t.addClass('not-active');
+        $.ajax({
+          type: 'GET',
+          url: href
+        }).done(function (r) {
+          (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.hidePreloader)();
+          var $requestBody = $(parser.parseFromString(r, "text/html"));
+          $(document).find('.container-js').append($requestBody.find('.container-js').html());
+          $pagination.html($requestBody.find('.pagination-container').html());
+          load = false;
+          $pagination.removeClass('not-active');
+          $t.remove();
+        });
       });
     }
   }]);
@@ -34947,7 +34976,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var photoswipe_lightbox__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! photoswipe/lightbox */ "./node_modules/photoswipe/dist/photoswipe-lightbox.esm.js");
 /* harmony import */ var photoswipe_style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! photoswipe/style.css */ "./node_modules/photoswipe/dist/photoswipe.css");
 /* harmony import */ var photoswipe__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! photoswipe */ "./node_modules/photoswipe/dist/photoswipe.esm.js");
-/* harmony import */ var _components_forms_catalog_filter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/forms/_catalog-filter */ "./resources/js/components/forms/_catalog-filter.js");
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
@@ -34955,7 +34983,6 @@ function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = 
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
 
 
 
@@ -35145,6 +35172,7 @@ window.$ = (jquery__WEBPACK_IMPORTED_MODULE_0___default());
 __webpack_provided_window_dot_jQuery = (jquery__WEBPACK_IMPORTED_MODULE_0___default());
 
 var fancyboxInit = function fancyboxInit() {
+  modalLanguageInit();
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-fancybox]').fancybox({
     placeFocusBack: false,
     backFocus: false
@@ -35163,6 +35191,11 @@ var fancyboxInit = function fancyboxInit() {
     jquery__WEBPACK_IMPORTED_MODULE_0___default().fancybox.close();
   });
 };
+function modalLanguageInit() {
+  var $modal = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).find('#modal-language');
+  if ($modal.length === 0) return;
+  jquery__WEBPACK_IMPORTED_MODULE_0___default().fancybox.open($modal);
+}
 function showMsg() {
   var msg = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
   var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';

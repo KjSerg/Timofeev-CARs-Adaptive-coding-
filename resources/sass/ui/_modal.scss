@@ -5,6 +5,38 @@
   padding: 5rem;
   background-color: #18151D;
   border-radius: 2.2rem;
+
+  &-language{
+    max-width: 46rem;
+    &-container{
+
+      display: flex;
+      flex-direction: column!important;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    &__link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      color:  #A7A6A8;
+      font-size: 1.6rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 2.8rem;
+    }
+    &__title{
+      text-align: center;
+      color: #FFF;
+      font-size: 2.2rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 3.4rem;
+    }
+  }
+
   @media (max-width: 660px) {
     padding: 4rem 2rem;
   }

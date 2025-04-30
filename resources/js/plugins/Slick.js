@@ -3,7 +3,6 @@ import 'slick-carousel';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
 import PhotoSwipe from 'photoswipe';
-import {catalogFilterInit} from "../components/forms/_catalog-filter";
 
 export const initGallery = () => {
     const lightbox = new PhotoSwipeLightbox({
