@@ -72,10 +72,10 @@ export const renderCatalog = (url, data = {}, addToHistory = true) => {
         data: data,
     }).done((response) => {
         const $r = $(parser.parseFromString(response, "text/html"));
-        const $pagination = $r.find('.pagination-js');
+        const $pagination = $r.find('.pagination-container');
         const $catalog = $r.find('.container-js');
         const $filter = $r.find('.catalog-filter');
-        $(document).find('.pagination-js').html($pagination.html());
+        $(document).find('.pagination-container').html($pagination.html());
         $(document).find('.container-js').html($catalog.html());
         $(document).find('.filter-js').removeClass('not-active');
         loading = false;
