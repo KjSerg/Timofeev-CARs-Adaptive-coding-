@@ -138,6 +138,14 @@ export default class Application {
             }
             window.location.href = href;
         });
+        this.$doc.on('click', '.set-showed-language-modal', function (e) {
+            e.preventDefault();
+            const $t = $(this);
+            const date = new Date();
+            date.setTime(date.getTime() + (90 * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + date.toUTCString();
+            document.cookie = "showed_modal_language=true;" + expires + ";path=/";
+        });
     }
 
     mainProductTrigger() {

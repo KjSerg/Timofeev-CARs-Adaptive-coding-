@@ -55,6 +55,25 @@
     justify-content: center;
     gap: 0.8rem;
 
+    &-flag{
+      margin-right: 0.4rem;
+      margin-left: 1rem;
+      width: 2.8rem;
+      height: 2.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      overflow: hidden;
+
+      @media (max-width: 360px){
+        margin-right: 0;
+        margin-left:0;
+        width: 2.6rem;
+        height: 2.6rem;
+      }
+    }
+
     .icon {
       display: flex;
       align-items: center;

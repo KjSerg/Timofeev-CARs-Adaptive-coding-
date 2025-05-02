@@ -33957,6 +33957,14 @@ var Application = /*#__PURE__*/function () {
         }
         window.location.href = href;
       });
+      this.$doc.on('click', '.set-showed-language-modal', function (e) {
+        e.preventDefault();
+        var $t = $(this);
+        var date = new Date();
+        date.setTime(date.getTime() + 90 * 24 * 60 * 60 * 1000);
+        var expires = "expires=" + date.toUTCString();
+        document.cookie = "showed_modal_language=true;" + expires + ";path=/";
+      });
     }
   }, {
     key: "mainProductTrigger",
