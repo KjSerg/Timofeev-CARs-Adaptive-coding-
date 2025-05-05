@@ -13,6 +13,7 @@ import {catalogFilterInit, renderCatalog} from "./forms/_catalog-filter";
 import {copyLink} from "./ui/_copy-link";
 import {showText} from "./ui/_show-text";
 import {hoveredModel} from "./ui/_models";
+import {rangeInit} from "../plugins/_rangeslider";
 
 export default class Application {
     constructor() {
@@ -88,6 +89,7 @@ export default class Application {
             showText();
             hoveredModel();
             initGallery();
+            rangeInit();
             t.cutTextInit();
             t.loadMore();
             this.showLoaderOnClick();

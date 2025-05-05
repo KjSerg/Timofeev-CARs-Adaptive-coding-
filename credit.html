@@ -1,0 +1,514 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Timofeev CARs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<header class="header">
+    <div class="header-container">
+        <a href="#" class="logo header__logo">
+            <img src="img/logo.svg" alt="">
+        </a>
+        <nav class="header-nav">
+            <ul>
+                <li><a href="#">Каталог</a></li>
+                <li><a href="#">Сервіс</a></li>
+                <li><a href="#">Блог</a></li>
+                <li><a href="#">Контакти</a></li>
+            </ul>
+        </nav>
+        <a href="tel:+380 (50) 157 85 25" class="header-tell">
+            <div class="header-tell__icon"><img src="img/call-calling.svg" alt=""></div>
+            <span>+380 (50) 157 85 25</span>
+        </a>
+        <a href="#" class="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+    </div>
+    <div class="breadcrumbs breadcrumbs--center">
+        <a href="#">Головна
+            <span>/</span>
+        </a>
+        <span>Кредит</span>
+    </div>
+</header>
+<main class="content">
+    <section class="section head-section" style="background-image: url(img/credit_bg.jpg);">
+        <div class="head-container">
+            <div class="head__title title">
+                <h1>Кредит</h1>
+            </div>
+            <div class="head__subtitle">
+                <p>Допоможемо з підбором програми фінансування, оформленням документів і супроводом на всіх етапах.</p>
+            </div>
+        </div>
+    </section>
+    <section class="section calculator-section section-padding">
+        <div class="container">
+            <div class="calculator-head">
+                <div class="subtitle faq__subtitle">Timofeev CARs</div>
+                <div class="title calculator__title">
+                    Калькулятор для розрахунку витрат за послугою з надання споживчого кредиту
+                </div>
+                <div class="description calculator__description">
+                    <p>
+                        Ми працюємо швидко: ваш автомобіль потрапляє до бази клієнтів, рекламних майданчиків і соцмереж
+                        уже в перший день. Статистика продажів — наш головний аргумент.
+                    </p>
+                </div>
+            </div>
+            <form class="calculator-container">
+                <div class="calculator-container-columns">
+                    <div class="calculator-column">
+                        <div class="calculator-wrap">
+                            <div class="calculator-item">
+                                <div class="calculator-item-head">
+                                    <div class="calculator-item-head__key">Вартість автомобіля:</div>
+                                    <div class="calculator-item-head__value range-slider-value">2 570 000 грн</div>
+                                </div>
+                                <div class="calculator-item-input-wrapper">
+                                    <input type="text"
+                                           data-postfix=" грн"
+                                           data-step="10000"
+                                           data-from="2570000"
+                                           data-min="200000"
+                                           data-max="5000000"
+                                           class="range-slider">
+                                </div>
+                                <div class="calculator-item-footer">
+                                    <div class="calculator-item-footer__item">Ціна від 200.000</div>
+                                    <div class="calculator-item-footer__item">Ціна до 5 000 000</div>
+                                </div>
+                            </div>
+                            <div class="calculator-item">
+                                <div class="calculator-item-head">
+                                    <div class="calculator-item-head__key">Авансовий платіж:</div>
+                                    <div class="calculator-item-head__value range-slider-value">45 %</div>
+                                </div>
+                                <div class="calculator-item-input-wrapper">
+                                    <input type="text"
+                                           data-postfix=" %"
+                                           data-step="1"
+                                           data-from="45"
+                                           data-min="30"
+                                           data-max="90"
+                                           class="range-slider">
+                                </div>
+                                <div class="calculator-item-footer">
+                                    <div class="calculator-item-footer__item">від 30%</div>
+                                    <div class="calculator-item-footer__item">до 90%</div>
+                                </div>
+                            </div>
+                            <div class="calculator-item">
+                                <div class="calculator-item-head">
+                                    <div class="calculator-item-head__key">Строк кредитування:</div>
+                                    <div class="calculator-item-head__value range-slider-value">36</div>
+                                </div>
+                                <div class="calculator-item-input-wrapper">
+                                    <input type="text"
+                                           data-postfix=" міс"
+                                           data-step="1"
+                                           data-from="36"
+                                           data-min="12"
+                                           data-max="60"
+                                           class="range-slider">
+                                </div>
+                                <div class="calculator-item-footer">
+                                    <div class="calculator-item-footer__item">від 12 міс.</div>
+                                    <div class="calculator-item-footer__item">до 60 міс.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="calculator-column">
+                        <ul class="calculator-list">
+                            <li class="calculator-list-item">
+                                <div class="calculator-list-item__title">Загальна вартість кредиту, гривень:</div>
+                                <div class="calculator-list-item__value calculator-cost">1 880 308,91 грн</div>
+                            </li>
+                            <li class="calculator-list-item">
+                                <div class="calculator-list-item__title">Загальний розмір кредиту, гривень:</div>
+                                <div class="calculator-list-item__value calculator-size">1 880 308,91 грн</div>
+                            </li>
+                            <li class="calculator-list-item">
+                                <div class="calculator-list-item__title">Загальні витрати за споживчим кредитом,
+                                    гривень:
+                                </div>
+                                <div class="calculator-list-item__value calculator-consumer-expenses">1 880 308,91 грн
+                                </div>
+                            </li>
+                            <li class="calculator-list-item">
+                                <div class="calculator-list-item__title">Реальна річна процентна ставка, відсотків
+                                    річних:
+                                </div>
+                                <div class="calculator-list-item__value calculator-year-percent">24,93 %</div>
+                            </li>
+                            <li class="calculator-list-item">
+                                <div class="calculator-list-item__title">Сума платежу за розрахунковий період, за
+                                    місяць:
+                                </div>
+                                <div class="calculator-list-item__value calculator-per-month">48 817,95 грн</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section class="section faq-section section-padding">
+        <div class="container">
+            <div class="faq-container">
+                <div class="subtitle faq__subtitle">Timofeev CARs</div>
+                <div class="title  faq__title">FAQ</div>
+                <div class="faq">
+                    <div class="faq-item accordion">
+                        <div class="faq-item-head accordion-head">
+                            <div class="faq-item__number">
+                                01
+                                <span>/</span>
+                            </div>
+                            <div class="faq-item__title">
+                                Скільки коштує доставка Tesla в Україну?
+                            </div>
+                            <div class="faq-item__icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34"
+                                     fill="none">
+  <path d="M8.5 17H25.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17 25.5V8.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                            </div>
+                        </div>
+                        <div class="faq-item-content accordion-content">
+                            <div class="faq-item-text ">
+                                <div class="text">
+                                    Вартість доставки залежить від країни покупки та обраного способу транспортування. В
+                                    середньому доставка з США коштує від $1500 до $2500, з Європи - від €500 до €1500.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item accordion">
+                        <div class="faq-item-head accordion-head">
+                            <div class="faq-item__number">
+                                01
+                                <span>/</span>
+                            </div>
+                            <div class="faq-item__title">
+                                Скільки коштує доставка Tesla в Україну?
+                            </div>
+                            <div class="faq-item__icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34"
+                                     fill="none">
+  <path d="M8.5 17H25.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17 25.5V8.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                            </div>
+                        </div>
+                        <div class="faq-item-content accordion-content">
+                            <div class="faq-item-text ">
+                                <div class="text">
+                                    Вартість доставки залежить від країни покупки та обраного способу транспортування. В
+                                    середньому доставка з США коштує від $1500 до $2500, з Європи - від €500 до €1500.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item accordion">
+                        <div class="faq-item-head accordion-head">
+                            <div class="faq-item__number">
+                                01
+                                <span>/</span>
+                            </div>
+                            <div class="faq-item__title">
+                                Скільки коштує доставка Tesla в Україну?
+                            </div>
+                            <div class="faq-item__icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34"
+                                     fill="none">
+  <path d="M8.5 17H25.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17 25.5V8.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                            </div>
+                        </div>
+                        <div class="faq-item-content accordion-content">
+                            <div class="faq-item-text ">
+                                <div class="text">
+                                    Вартість доставки залежить від країни покупки та обраного способу транспортування. В
+                                    середньому доставка з США коштує від $1500 до $2500, з Європи - від €500 до €1500.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item accordion">
+                        <div class="faq-item-head accordion-head">
+                            <div class="faq-item__number">
+                                01
+                                <span>/</span>
+                            </div>
+                            <div class="faq-item__title">
+                                Скільки коштує доставка Tesla в Україну?
+                            </div>
+                            <div class="faq-item__icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34"
+                                     fill="none">
+  <path d="M8.5 17H25.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17 25.5V8.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                            </div>
+                        </div>
+                        <div class="faq-item-content accordion-content">
+                            <div class="faq-item-text ">
+                                <div class="text">
+                                    Вартість доставки залежить від країни покупки та обраного способу транспортування. В
+                                    середньому доставка з США коштує від $1500 до $2500, з Європи - від €500 до €1500.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item accordion">
+                        <div class="faq-item-head accordion-head">
+                            <div class="faq-item__number">
+                                01
+                                <span>/</span>
+                            </div>
+                            <div class="faq-item__title">
+                                Скільки коштує доставка Tesla в Україну?
+                            </div>
+                            <div class="faq-item__icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34"
+                                     fill="none">
+  <path d="M8.5 17H25.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17 25.5V8.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                            </div>
+                        </div>
+                        <div class="faq-item-content accordion-content">
+                            <div class="faq-item-text ">
+                                <div class="text">
+                                    Вартість доставки залежить від країни покупки та обраного способу транспортування. В
+                                    середньому доставка з США коштує від $1500 до $2500, з Європи - від €500 до €1500.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item accordion">
+                        <div class="faq-item-head accordion-head">
+                            <div class="faq-item__number">
+                                01
+                                <span>/</span>
+                            </div>
+                            <div class="faq-item__title">
+                                Скільки коштує доставка Tesla в Україну?
+                            </div>
+                            <div class="faq-item__icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34"
+                                     fill="none">
+  <path d="M8.5 17H25.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17 25.5V8.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                            </div>
+                        </div>
+                        <div class="faq-item-content accordion-content">
+                            <div class="faq-item-text ">
+                                <div class="text">
+                                    Вартість доставки залежить від країни покупки та обраного способу транспортування. В
+                                    середньому доставка з США коштує від $1500 до $2500, з Європи - від €500 до €1500.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item accordion">
+                        <div class="faq-item-head accordion-head">
+                            <div class="faq-item__number">
+                                01
+                                <span>/</span>
+                            </div>
+                            <div class="faq-item__title">
+                                Скільки коштує доставка Tesla в Україну?
+                            </div>
+                            <div class="faq-item__icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34"
+                                     fill="none">
+  <path d="M8.5 17H25.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17 25.5V8.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                            </div>
+                        </div>
+                        <div class="faq-item-content accordion-content">
+                            <div class="faq-item-text ">
+                                <div class="text">
+                                    Вартість доставки залежить від країни покупки та обраного способу транспортування. В
+                                    середньому доставка з США коштує від $1500 до $2500, з Європи - від €500 до €1500.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item accordion">
+                        <div class="faq-item-head accordion-head">
+                            <div class="faq-item__number">
+                                01
+                                <span>/</span>
+                            </div>
+                            <div class="faq-item__title">
+                                Скільки коштує доставка Tesla в Україну?
+                            </div>
+                            <div class="faq-item__icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34"
+                                     fill="none">
+  <path d="M8.5 17H25.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17 25.5V8.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                            </div>
+                        </div>
+                        <div class="faq-item-content accordion-content">
+                            <div class="faq-item-text ">
+                                <div class="text">
+                                    Вартість доставки залежить від країни покупки та обраного способу транспортування. В
+                                    середньому доставка з США коштує від $1500 до $2500, з Європи - від €500 до €1500.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item accordion">
+                        <div class="faq-item-head accordion-head">
+                            <div class="faq-item__number">
+                                01
+                                <span>/</span>
+                            </div>
+                            <div class="faq-item__title">
+                                Скільки коштує доставка Tesla в Україну?
+                            </div>
+                            <div class="faq-item__icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34"
+                                     fill="none">
+  <path d="M8.5 17H25.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17 25.5V8.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                            </div>
+                        </div>
+                        <div class="faq-item-content accordion-content">
+                            <div class="faq-item-text ">
+                                <div class="text">
+                                    Вартість доставки залежить від країни покупки та обраного способу транспортування. В
+                                    середньому доставка з США коштує від $1500 до $2500, з Європи - від €500 до €1500.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="description faq__description">
+                    Не знайшли відповідь? Зв'яжіться з нами – допоможемо розібратися!
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section connection-section">
+        <div class="connection-section-decor">
+            <img src="img/bgImg.jpg" class="cover" alt="">
+        </div>
+        <div class="container">
+            <div class="connection-content" style="background-image: url(img/Noise.png)">
+                <div class="connection__title">
+                    Швидкий зв’язок з нами
+                </div>
+                <div class="connection__subtitle text">
+                    <p>
+                        Допоможемо знайти вашу Tesla, відповімо на всі запитання та підберемо найкращий варіант!
+                    </p>
+                </div>
+                <form class="connection-form form">
+                    <label class="form-label quarter">
+                        <input type="text" placeholder="Ваше імя">
+                    </label>
+                    <label class="form-label quarter">
+                        <input type="tel" placeholder="Ваш телефон">
+                    </label>
+                    <label class="form-label quarter">
+                        <input type="text" placeholder="Ваше повідомлення">
+                    </label>
+                    <div class="form-label quarter">
+                        <button type="submit">Замовити дзвінок</button>
+                    </div>
+                    <div class="form-consent">
+                        <label class="form-consent-box">
+                            <input type="checkbox">
+                            <span></span>
+                        </label>
+                        <div class="form-consent-text">
+                            <p>Ви погоджуєтеся з нашою дружньою <a href="#">політикою конфіденційності</a>.</p>
+                        </div>
+                    </div>
+                </form>
+                <div class="connection-list">
+                    <a href="#" class="connection-list__item">
+                        <span class="icon"><img src="img/Artboard.svg" alt=""></span>
+                        Канал в Telegram
+                    </a>
+                    <a href="#" class="connection-list__item">
+                        <span class="icon"><img src="img/Artboard.svg" alt=""></span>
+                        Перейти в Telegram-чат
+                    </a>
+                    <a href="#" class="connection-list__item">
+                        <span class="icon"><img src="img/call-calling(2).svg" alt=""></span>
+                        +380 (50) 157 85 25
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-top">
+            <a href="#" class="logo footer__logo">
+                <img src="img/logo.svg" alt="">
+            </a>
+            <div class="social-networks">
+                <a href="#" class="social-network">
+                    <span class="icon"><img src="img/s1.svg" alt=""></span>
+                    <span class="social-network__text">Instagram</span>
+                </a>
+                <a href="#" class="social-network">
+                    <span class="icon"><img src="img/s2.svg" alt=""></span>
+                    <span class="social-network__text">Viber</span>
+                </a>
+                <a href="#" class="social-network">
+                    <span class="icon"><img src="img/s3.svg" alt=""></span>
+                    <span class="social-network__text">Telegram</span>
+                </a>
+            </div>
+            <ul class="footer-contacts">
+                <li><a href="#">timofeev@gmail.com</a></li>
+                <li><a href="#">+380 (50) 157 85 25</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2025 Timofeev CARs. Усі права захищено
+            </div>
+            <nav class="footer-links">
+                <ul>
+                    <li>
+                        <a href="#">Політика конфіденційності</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</footer>
+<script>
+    var adminAjax = '';
+</script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
