@@ -208,6 +208,20 @@
       display: flex;
       justify-content: space-between;
       gap: 1rem;
+      &--wrap{
+        flex-wrap: wrap;
+        & > *{
+          width: calc(50% - 0.5rem);
+          @media (max-width: 600px) {
+            width: 100%;
+            max-width: 100%;
+          }
+          &:first-child{
+            width: 100%;
+            max-width: 100%;
+          }
+        }
+      }
       @media (max-width: 1023px) {
         justify-content: center;
       }
