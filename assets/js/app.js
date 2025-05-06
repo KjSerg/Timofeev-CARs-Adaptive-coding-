@@ -36271,6 +36271,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ui_show_text__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./ui/_show-text */ "./resources/js/components/ui/_show-text.js");
 /* harmony import */ var _ui_models__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./ui/_models */ "./resources/js/components/ui/_models.js");
 /* harmony import */ var _plugins_rangeslider__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../plugins/_rangeslider */ "./resources/js/plugins/_rangeslider.js");
+/* harmony import */ var _creditCalculator__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./_creditCalculator */ "./resources/js/components/_creditCalculator.js");
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
@@ -36278,6 +36279,7 @@ function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = 
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
 
 
 
@@ -36380,6 +36382,8 @@ var Application = /*#__PURE__*/function () {
         var form = new _forms_FormHandler__WEBPACK_IMPORTED_MODULE_7__["default"]('.form-js');
         var slick = new _plugins_Slick__WEBPACK_IMPORTED_MODULE_10__["default"]();
         slick.gallerySliderRefresh();
+        var calculator = new _creditCalculator__WEBPACK_IMPORTED_MODULE_16__.Calculator();
+        calculator.selfInit();
       });
     }
   }, {
@@ -36483,6 +36487,93 @@ var Application = /*#__PURE__*/function () {
   }]);
 }();
 
+
+/***/ }),
+
+/***/ "./resources/js/components/_creditCalculator.js":
+/*!******************************************************!*\
+  !*** ./resources/js/components/_creditCalculator.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Calculator: () => (/* binding */ Calculator)
+/* harmony export */ });
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+var Calculator = /*#__PURE__*/function () {
+  function Calculator() {
+    _classCallCheck(this, Calculator);
+  }
+  return _createClass(Calculator, [{
+    key: "selfInit",
+    value: function selfInit() {
+      var t = this;
+      $(document).find('.credit-calculator').each(function () {
+        t.calculate($(this));
+      });
+    }
+  }, {
+    key: "calculate",
+    value: function calculate($item) {
+      console.log($item);
+      var $priceInput = $item.find('.credit-input-price');
+      var $advancePaymentInput = $item.find('.credit-input-advance-payment');
+      var $periodInput = $item.find('.credit-input-period');
+      if ($priceInput.length === 0) return;
+      if ($advancePaymentInput.length === 0) return;
+      if ($periodInput.length === 0) return;
+      var price = $priceInput.val();
+      var advancePayment = $advancePaymentInput.val();
+      var period = $periodInput.val();
+      price = Number(price.trim());
+      advancePayment = Number(advancePayment.trim());
+      period = Number(period.trim());
+      console.log(price);
+      if (isNaN(price)) return;
+      if (isNaN(advancePayment)) return;
+      if (isNaN(period)) return;
+      var commission = Number(creditData.commission);
+      var annualRate = Number(creditData.annualRate);
+      var dollarExchangeRate = Number(creditData.dollarExchangeRate);
+      var advancePaymentCoefficient = 1 - advancePayment / 100;
+      var S = price * advancePaymentCoefficient;
+      var K = S * (commission / 100);
+      var monthlyRate = annualRate / 1200;
+      var variable = Math.pow(1 + monthlyRate, period);
+      var monthlyPaymentCoef = monthlyRate * variable / (variable - 1);
+      var monthlyPayment = S * monthlyPaymentCoef;
+      var $priceOut = $item.find('.credit-out-price');
+      var $sumOut = $item.find('.credit-out-sum');
+      var $commissionOut = $item.find('.credit-out-commission');
+      var $paymentOut = $item.find('.credit-out-payment');
+      console.log(price);
+      console.log(S);
+      console.log(K);
+      console.log(monthlyPayment);
+      $priceOut.text(this.formatedNumber(price, dollarExchangeRate));
+      $sumOut.text(this.formatedNumber(S, dollarExchangeRate));
+      $commissionOut.text(this.formatedNumber(K, dollarExchangeRate));
+      $paymentOut.text(this.formatedNumber(monthlyPayment, dollarExchangeRate));
+    }
+  }, {
+    key: "formatedNumber",
+    value: function formatedNumber(usdAmount, usdRate) {
+      var uahAmount = Math.floor(usdAmount * usdRate);
+      var formatNumber = function formatNumber(number) {
+        return number.toLocaleString('uk-UA');
+      };
+      return "".concat(formatNumber(usdAmount), " $ / ").concat(formatNumber(uahAmount), " \u0433\u0440\u043D");
+    }
+  }]);
+}();
 
 /***/ }),
 
@@ -37716,9 +37807,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var ion_rangeslider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ion-rangeslider */ "./node_modules/ion-rangeslider/js/ion.rangeSlider.js");
 /* harmony import */ var ion_rangeslider__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(ion_rangeslider__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_creditCalculator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/_creditCalculator */ "./resources/js/components/_creditCalculator.js");
+
 
 
 var rangeInit = function rangeInit() {
+  var calculator = new _components_creditCalculator__WEBPACK_IMPORTED_MODULE_2__.Calculator();
   jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     jquery__WEBPACK_IMPORTED_MODULE_0___default()(".range-slider").each(function () {
       var $inp = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
@@ -37740,8 +37834,12 @@ var rangeInit = function rangeInit() {
         postfix: postfix,
         skin: "round",
         onChange: function onChange(data) {
-          console.log(data);
-          $inp.closest('.calculator-item').find('.range-slider-value').text(data.from_pretty + postfix);
+          if ($inp.hasClass('credit-input-price')) {
+            $inp.closest('.calculator-item').find('.range-slider-value').text(calculator.formatedNumber(data.from, Number(creditData.dollarExchangeRate)));
+          } else {
+            $inp.closest('.calculator-item').find('.range-slider-value').text(data.from_pretty + postfix);
+          }
+          calculator.calculate($inp.closest('.credit-calculator'));
         }
       });
     });

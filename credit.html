@@ -67,27 +67,28 @@
                     </p>
                 </div>
             </div>
-            <form class="calculator-container">
+            <form class="calculator-container credit-calculator">
                 <div class="calculator-container-columns">
                     <div class="calculator-column">
-                        <div class="calculator-wrap">
+                        <div class="calculator-wrap ">
                             <div class="calculator-item">
                                 <div class="calculator-item-head">
                                     <div class="calculator-item-head__key">Вартість автомобіля:</div>
-                                    <div class="calculator-item-head__value range-slider-value">2 570 000 грн</div>
+                                    <div class="calculator-item-head__value range-slider-value">27 990 $ / 1 175 580 грн</div>
                                 </div>
                                 <div class="calculator-item-input-wrapper">
                                     <input type="text"
-                                           data-postfix=" грн"
-                                           data-step="10000"
-                                           data-from="2570000"
-                                           data-min="200000"
-                                           data-max="5000000"
-                                           class="range-slider">
+                                           value="28000"
+                                           data-postfix=" $"
+                                           data-step="500"
+                                           data-from="28000"
+                                           data-min="5000"
+                                           data-max="100000"
+                                           class="range-slider credit-input-price">
                                 </div>
                                 <div class="calculator-item-footer">
-                                    <div class="calculator-item-footer__item">Ціна від 200.000</div>
-                                    <div class="calculator-item-footer__item">Ціна до 5 000 000</div>
+                                    <div class="calculator-item-footer__item">Ціна від 5 000</div>
+                                    <div class="calculator-item-footer__item">Ціна до 100 000</div>
                                 </div>
                             </div>
                             <div class="calculator-item">
@@ -97,12 +98,13 @@
                                 </div>
                                 <div class="calculator-item-input-wrapper">
                                     <input type="text"
+                                           value="45"
                                            data-postfix=" %"
                                            data-step="1"
                                            data-from="45"
                                            data-min="30"
                                            data-max="90"
-                                           class="range-slider">
+                                           class="range-slider credit-input-advance-payment">
                                 </div>
                                 <div class="calculator-item-footer">
                                     <div class="calculator-item-footer__item">від 30%</div>
@@ -116,12 +118,13 @@
                                 </div>
                                 <div class="calculator-item-input-wrapper">
                                     <input type="text"
+                                           value="36"
                                            data-postfix=" міс"
                                            data-step="1"
                                            data-from="36"
                                            data-min="12"
                                            data-max="60"
-                                           class="range-slider">
+                                           class="range-slider credit-input-period">
                                 </div>
                                 <div class="calculator-item-footer">
                                     <div class="calculator-item-footer__item">від 12 міс.</div>
@@ -133,39 +136,249 @@
                     <div class="calculator-column">
                         <ul class="calculator-list">
                             <li class="calculator-list-item">
-                                <div class="calculator-list-item__title">Загальна вартість кредиту, гривень:</div>
-                                <div class="calculator-list-item__value calculator-cost">1 880 308,91 грн</div>
+                                <div class="calculator-list-item__title">Ціна автомобіля:</div>
+                                <div class="calculator-list-item__value credit-out-price">27 990 $ / 1 175 580 грн</div>
                             </li>
                             <li class="calculator-list-item">
-                                <div class="calculator-list-item__title">Загальний розмір кредиту, гривень:</div>
-                                <div class="calculator-list-item__value calculator-size">1 880 308,91 грн</div>
+                                <div class="calculator-list-item__title">Сумма в кредит:</div>
+                                <div class="calculator-list-item__value credit-out-sum">13 995$ / 587 790$</div>
                             </li>
                             <li class="calculator-list-item">
-                                <div class="calculator-list-item__title">Загальні витрати за споживчим кредитом,
-                                    гривень:
-                                </div>
-                                <div class="calculator-list-item__value calculator-consumer-expenses">1 880 308,91 грн
-                                </div>
+                                <div class="calculator-list-item__title">Разова комісія:</div>
+                                <div class="calculator-list-item__value credit-out-commission">278$ / 11 676 грн</div>
                             </li>
                             <li class="calculator-list-item">
-                                <div class="calculator-list-item__title">Реальна річна процентна ставка, відсотків
-                                    річних:
-                                </div>
-                                <div class="calculator-list-item__value calculator-year-percent">24,93 %</div>
-                            </li>
-                            <li class="calculator-list-item">
-                                <div class="calculator-list-item__title">Сума платежу за розрахунковий період, за
-                                    місяць:
-                                </div>
-                                <div class="calculator-list-item__value calculator-per-month">48 817,95 грн</div>
+                                <div class="calculator-list-item__title">Щомісячний платіж:</div>
+                                <div class="calculator-list-item__value credit-out-payment">427$ / 17 943 грн</div>
                             </li>
                         </ul>
                     </div>
                 </div>
+                <button type="submit" class="button">Підтвердити заявку</button>
             </form>
         </div>
     </section>
-    <section class="section faq-section section-padding">
+    <section class="section simple-text-section section-padding" style="background-color: #16141B;">
+        <div class="container">
+            <div class="text">
+                <h6>Інформація про орієнтовні умови кредитування Tesla через Timofeev CARS</h6>
+                <p>Вартість автомобіля (приклад): 2 570 000 грн</p>
+                <p>Авансовий платіж: 45%</p>
+                <p>Строк кредитування: 36 місяців</p>
+                <p>Орієнтовна реальна річна ставка: 24,93%</p>
+                <p>Орієнтовна сума щомісячного платежу: 48 817,95 грн</p>
+                <p>Ми проводимо професійну оцінку автомобіля, готуємо якісну презентацію, публікуємо на популярних платформах і просуваємо серед нашої бази клієнтів. Після цього беремо на себе переговори, організацію зустрічей, перевірку покупця і повне юридичне оформлення угоди. Ви просто отримуєте повідомлення, коли авто продано, та узгоджуєте зручний спосіб отримання коштів.</p>
+                <h6>Що враховано в розрахунках:</h6>
+                <p>Ставка враховує середньоринковий кредит під авто з пробігом Tesla.</p>
+                <p>Додаткові витрати, повʼязані з оформленням, можуть включати:</p>
+               <ul>
+                   <li>разову комісію банку (≈ 2.5%);</li>
+                   <li>обов’язкове страхування (КАСКО, ОСЦПВ);</li>
+                   <li>витрати на реєстрацію авто в Україні (у т.ч. послуги МВС, огляд, номерні знаки).</li>
+               </ul>
+                <p>Кожен банк може пропонувати індивідуальні умови кредитування залежно від кредитної історії, регіону та моделі авто.</p>
+            </div>
+            <div class="text-hidden">
+                <div class="text-hidden-container text">
+                    <p>
+                        Оснащений батареєю ємністю 82 кВт·г, цей електрокар забезпечує запас ходу до 430 км на
+                        одному заряді (за циклом EPA). Завдяки потужному електродвигуну та повному приводу (AWD)
+                        автомобіль демонструє чудову керованість та стабільність на дорозі, що робить його
+                        ідеальним варіантом як для міських умов, так і для далеких поїздок.
+                    </p>
+                </div>
+                <a href="#" class="text-hidden__button"
+                   data-show-text="Читати повністю"
+                   data-hide-text="Сховати"
+                >
+                    <span class="button-text">Читати повністю</span>
+                    <span class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none">
+  <mask id="mask0_943_9776" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+    <rect x="24" width="24" height="24" transform="rotate(90 24 0)" fill="#D9D9D9"/>
+  </mask>
+  <g mask="url(#mask0_943_9776)">
+    <path d="M12.0002 12.6L15.9002 8.70005C16.0835 8.51672 16.3169 8.42505 16.6002 8.42505C16.8835 8.42505 17.1169 8.51672 17.3002 8.70005C17.4835 8.88338 17.5752 9.11672 17.5752 9.40005C17.5752 9.68338 17.4835 9.91672 17.3002 10.1L12.7002 14.7C12.6002 14.8 12.4919 14.8709 12.3752 14.9125C12.2585 14.9542 12.1335 14.975 12.0002 14.975C11.8669 14.975 11.7419 14.9542 11.6252 14.9125C11.5085 14.8709 11.4002 14.8 11.3002 14.7L6.7002 10.1C6.51686 9.91672 6.42519 9.68338 6.42519 9.40005C6.42519 9.11672 6.51686 8.88338 6.7002 8.70005C6.88353 8.51672 7.11686 8.42505 7.4002 8.42505C7.68353 8.42505 7.91686 8.51672 8.10019 8.70005L12.0002 12.6Z"
+          fill="#E32A2F"/>
+  </g>
+</svg>
+                            </span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="section section-padding recommendations-section">
+        <div class="container">
+            <div class="recommendations__subtitle subtitle">
+                Timofeev CARs
+            </div>
+            <div class="recommendations__title title title--margin">
+                Авто доступні в кредит
+            </div>
+            <div class="recommendations-slider-wrapper">
+                <div class="recommendations-slider-controls  slider-controls">
+                    <a href="#" class="slider-control slick__prev">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  fill="none">
+  <path d="M9.57031 5.92969L3.50031 11.9997L9.57031 18.0697" stroke="white" stroke-width="2" stroke-miterlimit="10"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M20.5 12H3.67" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
+        stroke-linejoin="round"/>
+</svg>
+                    </a>
+                    <a href="#" class="slider-control slick__next">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none">
+  <path d="M14.4299 5.92969L20.4999 11.9997L14.4299 18.0697" stroke="white" stroke-width="2" stroke-miterlimit="10"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M3.5 12H20.33" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
+        stroke-linejoin="round"/>
+</svg>
+                    </a>
+                </div>
+                <div class="recommendations-slider">
+                    <div> <div class="car">
+                        <div class="car-approved">
+                            <img src="img/approved.svg" alt="">
+                        </div>
+                        <a href="#" class="car__image">
+                            <img src="img/car1.jpg" alt="">
+                        </a>
+                        <div class="car-data">
+                            <a href="#" class="car__title">
+                                Tesla Model S Long Range AWD, 2022
+                            </a>
+                            <ul class="car-list">
+                                <li class="car-list-item">
+                                    <div class="car-list-item__icon">
+                                        <img src="img/speedm.svg" alt="">
+                                    </div>
+                                    Пробіг: 15 тис.км.
+                                </li>
+                                <li class="car-list-item">
+                                    <div class="car-list-item__icon">
+                                        <img src="img/setting-2.svg" alt="">
+                                    </div>
+                                    Батарея: 82 kWh
+                                </li>
+                                <li class="car-list-item">
+                                    <div class="car-list-item__icon">
+                                        <img src="img/setting-2-1.svg" alt="">
+                                    </div>
+                                    Стан: Ідеальний, без подряпин
+                                </li>
+                            </ul>
+                            <div class="car-price">
+                                Ціна: <strong>14 600 $</strong>
+                            </div>
+                        </div>
+                    </div></div>
+                    <div> <div class="car">
+                        <a href="#" class="car__image">
+                            <img src="img/car1.jpg" alt="">
+                        </a>
+                        <div class="car-data">
+                            <a href="#" class="car__title">
+                                Tesla Model S Long Range AWD, 2022
+                            </a>
+                            <ul class="car-list">
+                                <li class="car-list-item">
+                                    <div class="car-list-item__icon">
+                                        <img src="img/speedm.svg" alt="">
+                                    </div>
+                                    Пробіг: 15 тис.км.
+                                </li>
+                                <li class="car-list-item">
+                                    <div class="car-list-item__icon">
+                                        <img src="img/setting-2.svg" alt="">
+                                    </div>
+                                    Батарея: 82 kWh
+                                </li>
+                                <li class="car-list-item">
+                                    <div class="car-list-item__icon">
+                                        <img src="img/setting-2-1.svg" alt="">
+                                    </div>
+                                    Стан: Ідеальний, без подряпин
+                                </li>
+                            </ul>
+                            <div class="car-price">
+                                Ціна: <strong>14 600 $</strong>
+                            </div>
+                        </div>
+                    </div></div>
+                    <div> <div class="car">
+                        <a href="#" class="car__image">
+                            <img src="img/car1.jpg" alt="">
+                        </a>
+                        <div class="car-data">
+                            <a href="#" class="car__title">
+                                Tesla Model S Long Range AWD, 2022
+                            </a>
+                            <ul class="car-list">
+                                <li class="car-list-item">
+                                    <div class="car-list-item__icon">
+                                        <img src="img/speedm.svg" alt="">
+                                    </div>
+                                    Пробіг: 15 тис.км.
+                                </li>
+                                <li class="car-list-item">
+                                    <div class="car-list-item__icon">
+                                        <img src="img/setting-2.svg" alt="">
+                                    </div>
+                                    Батарея: 82 kWh
+                                </li>
+                                <li class="car-list-item">
+                                    <div class="car-list-item__icon">
+                                        <img src="img/setting-2-1.svg" alt="">
+                                    </div>
+                                    Стан: Ідеальний, без подряпин
+                                </li>
+                            </ul>
+                            <div class="car-price">
+                                Ціна: <strong>14 600 $</strong>
+                            </div>
+                        </div>
+                    </div></div>
+                    <div> <div class="car">
+                        <a href="#" class="car__image">
+                            <img src="img/car1.jpg" alt="">
+                        </a>
+                        <div class="car-data">
+                            <a href="#" class="car__title">
+                                Tesla Model S Long Range AWD, 2022
+                            </a>
+                            <ul class="car-list">
+                                <li class="car-list-item">
+                                    <div class="car-list-item__icon">
+                                        <img src="img/speedm.svg" alt="">
+                                    </div>
+                                    Пробіг: 15 тис.км.
+                                </li>
+                                <li class="car-list-item">
+                                    <div class="car-list-item__icon">
+                                        <img src="img/setting-2.svg" alt="">
+                                    </div>
+                                    Батарея: 82 kWh
+                                </li>
+                                <li class="car-list-item">
+                                    <div class="car-list-item__icon">
+                                        <img src="img/setting-2-1.svg" alt="">
+                                    </div>
+                                    Стан: Ідеальний, без подряпин
+                                </li>
+                            </ul>
+                            <div class="car-price">
+                                Ціна: <strong>14 600 $</strong>
+                            </div>
+                        </div>
+                    </div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section faq-section section-padding" style="background-color: #16141B;">
         <div class="container">
             <div class="faq-container">
                 <div class="subtitle faq__subtitle">Timofeev CARs</div>
@@ -508,6 +721,11 @@
 </footer>
 <script>
     var adminAjax = '';
+    var creditData = {
+        commission: 4,
+        annualRate: 24,
+        dollarExchangeRate: 42,
+    };
 </script>
 <script src="assets/js/app.js"></script>
 </body>

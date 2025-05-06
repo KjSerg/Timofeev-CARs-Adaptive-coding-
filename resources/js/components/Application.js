@@ -14,6 +14,7 @@ import {copyLink} from "./ui/_copy-link";
 import {showText} from "./ui/_show-text";
 import {hoveredModel} from "./ui/_models";
 import {rangeInit} from "../plugins/_rangeslider";
+import {Calculator} from "./_creditCalculator";
 
 export default class Application {
     constructor() {
@@ -98,6 +99,8 @@ export default class Application {
             const form = new FormHandler('.form-js');
             const slick = new Slick();
             slick.gallerySliderRefresh();
+            const calculator = new Calculator();
+            calculator.selfInit();
         });
 
     }

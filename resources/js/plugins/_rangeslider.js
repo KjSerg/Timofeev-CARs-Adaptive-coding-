@@ -1,7 +1,9 @@
 import $ from 'jquery';
 import 'ion-rangeslider';
+import {Calculator} from "../components/_creditCalculator";
 
 export const rangeInit = () => {
+    const calculator = new Calculator();
     $(document).ready(function () {
         $(".range-slider").each(function () {
             const $inp = $(this);
@@ -23,8 +25,12 @@ export const rangeInit = () => {
                 postfix: postfix,
                 skin: "round",
                 onChange: function (data) {
-                    console.log(data)
-                    $inp.closest('.calculator-item').find('.range-slider-value').text(data.from_pretty + postfix);
+                    if($inp.hasClass('credit-input-price')){
+                        $inp.closest('.calculator-item').find('.range-slider-value').text(calculator.formatedNumber(data.from, Number(creditData.dollarExchangeRate)));
+                    }else {
+                        $inp.closest('.calculator-item').find('.range-slider-value').text(data.from_pretty + postfix);
+                    }
+                    calculator.calculate($inp.closest('.credit-calculator'));
                 }
             });
         })

@@ -52,3 +52,8 @@
 .selectric .button{
   border: none;
 }
+
+button{
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+}
