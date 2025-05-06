@@ -36561,8 +36561,6 @@ var Calculator = /*#__PURE__*/function () {
       $sumOut.text(this.formatedNumber(S, dollarExchangeRate));
       $commissionOut.text(this.formatedNumber(K, dollarExchangeRate));
       $paymentOut.text(this.formatedNumber(monthlyPayment, dollarExchangeRate));
-      console.log(data);
-      console.log(annualRate);
     }
   }, {
     key: "formatedNumber",

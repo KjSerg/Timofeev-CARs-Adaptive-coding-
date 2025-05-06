@@ -57,3 +57,20 @@ button{
   cursor: pointer;
   transition: 0.4s ease-in-out;
 }
+
+.button-load-more{
+  display: flex;
+  background-color: rgba(#fff, 0);
+  border-color: rgba(#fff, 0);
+  height: 6.2rem;
+  padding: 2rem 3.2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+
+  color:  #FFF;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
