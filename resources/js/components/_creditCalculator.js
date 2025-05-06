@@ -51,13 +51,14 @@ export class Calculator {
     }
 
     formatedNumber(usdAmount, usdRate) {
-        const uahAmount = Math.floor(usdAmount * usdRate);
+        let n = Number(usdAmount.toFixed(0));
+        const uahAmount = Math.floor(n * usdRate);
 
         const formatNumber = (number) => {
             return number.toLocaleString('uk-UA');
         };
 
-        return `${formatNumber(usdAmount)} $ / ${formatNumber(uahAmount)} грн`;
+        return `${formatNumber(n)} $ / ${formatNumber(uahAmount)} грн`;
     }
 
     getRateCommission(period, advancePayment) {

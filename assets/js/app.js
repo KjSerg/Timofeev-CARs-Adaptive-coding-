@@ -36567,11 +36567,12 @@ var Calculator = /*#__PURE__*/function () {
   }, {
     key: "formatedNumber",
     value: function formatedNumber(usdAmount, usdRate) {
-      var uahAmount = Math.floor(usdAmount * usdRate);
+      var n = Number(usdAmount.toFixed(0));
+      var uahAmount = Math.floor(n * usdRate);
       var formatNumber = function formatNumber(number) {
         return number.toLocaleString('uk-UA');
       };
-      return "".concat(formatNumber(usdAmount), " $ / ").concat(formatNumber(uahAmount), " \u0433\u0440\u043D");
+      return "".concat(formatNumber(n), " $ / ").concat(formatNumber(uahAmount), " \u0433\u0440\u043D");
     }
   }, {
     key: "getRateCommission",
