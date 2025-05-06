@@ -192,14 +192,14 @@
                                                value="36"
                                                data-postfix=" міс"
                                                data-step="1"
-                                               data-from="36"
-                                               data-min="12"
-                                               data-max="60"
+                                               data-from="12"
+                                               data-min="1"
+                                               data-max="36"
                                                class="range-slider credit-input-period">
                                     </div>
                                     <div class="calculator-item-footer">
-                                        <div class="calculator-item-footer__item">від 12 міс.</div>
-                                        <div class="calculator-item-footer__item">до 60 міс.</div>
+                                        <div class="calculator-item-footer__item">від 1 міс.</div>
+                                        <div class="calculator-item-footer__item">до 36 міс.</div>
                                     </div>
                                 </div>
                             </div>
@@ -808,8 +808,62 @@
 <script>
     var adminAjax = '';
     var creditData = {
-        commission: 4,
-        annualRate: 24,
+        annualRates: [
+            {
+                commission: 1.99,
+                period: [1, 12],
+                values: [
+                    {
+                        percent: [0, 49],
+                        value: 9.99
+                    },
+                    {
+                        percent: [50, 69],
+                        value: 7.99
+                    },
+                    {
+                        percent: [70, 100],
+                        value: 5.99
+                    }
+                ],
+            },
+            {
+                commission: 1.99,
+                period: [13, 24],
+                values: [
+                    {
+                        percent: [0, 49],
+                        value: 12.99
+                    },
+                    {
+                        percent: [50, 69],
+                        value: 8.99
+                    },
+                    {
+                        percent: [70, 100],
+                        value: 6.99
+                    }
+                ],
+            },
+            {
+                commission: 1.99,
+                period: [25, 36],
+                values: [
+                    {
+                        percent: [0, 49],
+                        value: 14.99
+                    },
+                    {
+                        percent: [50, 69],
+                        value: 9.99
+                    },
+                    {
+                        percent: [70, 100],
+                        value: 8.99
+                    }
+                ],
+            },
+        ],
         dollarExchangeRate: 42,
     };
 </script>

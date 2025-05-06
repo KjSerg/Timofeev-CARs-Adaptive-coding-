@@ -36501,6 +36501,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Calculator: () => (/* binding */ Calculator)
 /* harmony export */ });
+/* harmony import */ var _utils_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/_helpers */ "./resources/js/components/utils/_helpers.js");
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
@@ -36508,6 +36509,7 @@ function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = 
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
 var Calculator = /*#__PURE__*/function () {
   function Calculator() {
     _classCallCheck(this, Calculator);
@@ -36540,8 +36542,9 @@ var Calculator = /*#__PURE__*/function () {
       if (isNaN(price)) return;
       if (isNaN(advancePayment)) return;
       if (isNaN(period)) return;
-      var commission = Number(creditData.commission);
-      var annualRate = Number(creditData.annualRate);
+      var data = this.getRateCommission(period, advancePayment);
+      var commission = data.commission;
+      var annualRate = data.rate;
       var dollarExchangeRate = Number(creditData.dollarExchangeRate);
       var advancePaymentCoefficient = 1 - advancePayment / 100;
       var S = price * advancePaymentCoefficient;
@@ -36554,14 +36557,12 @@ var Calculator = /*#__PURE__*/function () {
       var $sumOut = $item.find('.credit-out-sum');
       var $commissionOut = $item.find('.credit-out-commission');
       var $paymentOut = $item.find('.credit-out-payment');
-      console.log(price);
-      console.log(S);
-      console.log(K);
-      console.log(monthlyPayment);
       $priceOut.text(this.formatedNumber(price, dollarExchangeRate));
       $sumOut.text(this.formatedNumber(S, dollarExchangeRate));
       $commissionOut.text(this.formatedNumber(K, dollarExchangeRate));
       $paymentOut.text(this.formatedNumber(monthlyPayment, dollarExchangeRate));
+      console.log(data);
+      console.log(annualRate);
     }
   }, {
     key: "formatedNumber",
@@ -36571,6 +36572,34 @@ var Calculator = /*#__PURE__*/function () {
         return number.toLocaleString('uk-UA');
       };
       return "".concat(formatNumber(usdAmount), " $ / ").concat(formatNumber(uahAmount), " \u0433\u0440\u043D");
+    }
+  }, {
+    key: "getRateCommission",
+    value: function getRateCommission(period, advancePayment) {
+      var annualRates = creditData.annualRates || [];
+      var res = {
+        rate: 0,
+        commission: 0
+      };
+      if (annualRates.length === 0) return res;
+      annualRates.forEach(function (item) {
+        var _period = item.period;
+        var min = _period[0];
+        var max = _period[1];
+        if ((0,_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.isInRange)(period, min, max)) {
+          res.commission = item.commission;
+          var values = item.values;
+          values.forEach(function (value) {
+            var _percents = value.percent;
+            var _min = _percents[0];
+            var _max = _percents[1];
+            if ((0,_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.isInRange)(advancePayment, _min, _max)) {
+              res.rate = value.value;
+            }
+          });
+        }
+      });
+      return res;
     }
   }]);
 }();
@@ -37371,6 +37400,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   isEven: () => (/* binding */ isEven),
 /* harmony export */   isHorizontal: () => (/* binding */ isHorizontal),
 /* harmony export */   isImageUrl: () => (/* binding */ isImageUrl),
+/* harmony export */   isInRange: () => (/* binding */ isInRange),
 /* harmony export */   isJsonString: () => (/* binding */ isJsonString),
 /* harmony export */   isMobile: () => (/* binding */ isMobile),
 /* harmony export */   isObjectEmpty: () => (/* binding */ isObjectEmpty),
@@ -37518,6 +37548,9 @@ function moveToElement($el) {
   $('html, body').animate({
     scrollTop: $el.offset().top
   });
+}
+function isInRange(number, min, max) {
+  return number >= min && number <= max;
 }
 
 /***/ }),

@@ -1,4 +1,4 @@
-
+import {isInRange} from "./utils/_helpers";
 
 export class Calculator {
 
@@ -27,8 +27,9 @@ export class Calculator {
         if (isNaN(price)) return;
         if (isNaN(advancePayment)) return;
         if (isNaN(period)) return;
-        const commission = Number(creditData.commission);
-        const annualRate = Number(creditData.annualRate);
+        const data = this.getRateCommission(period, advancePayment);
+        const commission = data.commission;
+        const annualRate = data.rate;
         const dollarExchangeRate = Number(creditData.dollarExchangeRate);
         let advancePaymentCoefficient = 1 - (advancePayment / 100);
         let S = price * advancePaymentCoefficient;
@@ -41,14 +42,12 @@ export class Calculator {
         const $sumOut = $item.find('.credit-out-sum');
         const $commissionOut = $item.find('.credit-out-commission');
         const $paymentOut = $item.find('.credit-out-payment');
-        console.log(price)
-        console.log(S)
-        console.log(K)
-        console.log(monthlyPayment)
         $priceOut.text(this.formatedNumber(price, dollarExchangeRate));
         $sumOut.text(this.formatedNumber(S, dollarExchangeRate));
         $commissionOut.text(this.formatedNumber(K, dollarExchangeRate));
         $paymentOut.text(this.formatedNumber(monthlyPayment, dollarExchangeRate));
+        console.log(data)
+        console.log(annualRate)
     }
 
     formatedNumber(usdAmount, usdRate) {
@@ -59,5 +58,32 @@ export class Calculator {
         };
 
         return `${formatNumber(usdAmount)} $ / ${formatNumber(uahAmount)} грн`;
+    }
+
+    getRateCommission(period, advancePayment) {
+        const annualRates = creditData.annualRates || [];
+        const res = {
+            rate: 0,
+            commission: 0
+        };
+        if (annualRates.length === 0) return res;
+        annualRates.forEach(function (item) {
+            const _period = item.period;
+            const min = _period[0];
+            const max = _period[1];
+            if (isInRange(period, min, max)) {
+                res.commission = item.commission;
+                let values = item.values;
+                values.forEach(function (value) {
+                    const _percents = value.percent;
+                    const _min = _percents[0];
+                    const _max = _percents[1];
+                    if (isInRange(advancePayment, _min, _max)) {
+                        res.rate = value.value;
+                    }
+                });
+            }
+        });
+        return res;
     }
 }

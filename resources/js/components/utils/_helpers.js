@@ -145,3 +145,7 @@ export function moveToElement($el) {
         scrollTop: $el.offset().top
     });
 }
+
+export function isInRange(number, min, max) {
+    return number >= min && number <= max;
+}
