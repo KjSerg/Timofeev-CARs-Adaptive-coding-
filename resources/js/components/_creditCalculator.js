@@ -37,7 +37,7 @@ export class Calculator {
         let monthlyRate = annualRate / 1200;
         let variable = Math.pow((1 + monthlyRate), period);
         let monthlyPaymentCoef = (monthlyRate * variable) / (variable - 1);
-        let monthlyPayment = S * monthlyPaymentCoef;
+        let monthlyPayment = Math.ceil(S * monthlyPaymentCoef);
         const $priceOut = $item.find('.credit-out-price');
         const $sumOut = $item.find('.credit-out-sum');
         const $commissionOut = $item.find('.credit-out-commission');
