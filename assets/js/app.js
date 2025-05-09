@@ -36938,6 +36938,12 @@ var catalogFilterInit = function catalogFilterInit() {
     $t.addClass('not-active');
     renderCatalog(url, serialize);
   });
+  $(document).mouseup(function (e) {
+    var div = $(document).find(".catalog-filter-item");
+    if (!div.is(e.target) && div.has(e.target).length === 0) {
+      $(document).find('.catalog-filter-item').removeClass('active');
+    }
+  });
 };
 var renderCatalog = function renderCatalog(url) {
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};

@@ -46,7 +46,6 @@ export const catalogFilterInit = () => {
             $(document).find('.catalog-filter-item').removeClass('active');
             $item.addClass('active');
         }
-
     });
     $(document).on('submit', '.filter-js', function (e) {
         e.preventDefault();
@@ -55,6 +54,13 @@ export const catalogFilterInit = () => {
         const serialize = $t.serialize();
         $t.addClass('not-active');
         renderCatalog(url, serialize);
+    });
+    $(document).mouseup(function (e) {
+        const div = $(document).find(".catalog-filter-item");
+        if (!div.is(e.target)
+            && div.has(e.target).length === 0) {
+            $(document).find('.catalog-filter-item').removeClass('active');
+        }
     });
 }
 
