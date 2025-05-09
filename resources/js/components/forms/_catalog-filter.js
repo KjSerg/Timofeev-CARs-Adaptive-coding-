@@ -47,7 +47,7 @@ export const catalogFilterInit = () => {
             $item.addClass('active');
         }
     });
-    $(document).on('submit', '.filter-js', function (e) {
+    $(document).on('submit', '.filter-js111', function (e) {
         e.preventDefault();
         const $t = $(this);
         const url = $t.attr('action');
@@ -61,6 +61,42 @@ export const catalogFilterInit = () => {
             && div.has(e.target).length === 0) {
             $(document).find('.catalog-filter-item').removeClass('active');
         }
+    });
+    $(document).on('submit', '.filter-js', function(e){
+        e.preventDefault();
+        var $form    = $(this);
+        var base     = $form.data('archive-url').replace(/\/+$/,'');
+        var modelRaw = $form.find('input[name="model"]').val().trim();
+        var defaultOrder   = $form.data('default-order') || '';
+        var url      = base + '/';
+
+        if ( modelRaw ) {
+            // ["Model 3","Model S"] → ["model-3","model-s"]
+            var slugs = modelRaw.split(',')
+                .map(function(s){
+                    return s.toLowerCase()
+                        .trim()
+                        .replace(/[^a-z0-9]+/g,'-')  // все не-лат.цифры в дефис
+                        .replace(/(^-+|-+$)/g,'');   // обрезать лишние дефисы
+                })
+                .filter(Boolean)
+                .join(',');
+
+            // Новая ЧПУ-часть
+            url = base + '/' + slugs + '/';
+        }
+
+        // 4) Собираем все GET-поля кроме model (он уже в пути)
+        var paramsArray = $form.serializeArray().filter(function(f){
+            if (f.name === 'model') return false;
+            // убираем default-order
+            if (f.name === '_order' && f.value === defaultOrder) return false;
+            return true;
+        });
+        var query = $.param(paramsArray);
+
+        $form.addClass('not-active');
+        renderCatalog(url, query);
     });
 }
 
