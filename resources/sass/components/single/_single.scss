@@ -572,3 +572,11 @@
     line-height: 3rem;
   }
 }
+
+.single-gallery-preview, .single-gallery {
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+.single-gallery-preview.slick-slider, .single-gallery.slick-slider {
+  opacity: 1;
+}

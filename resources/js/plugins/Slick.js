@@ -116,21 +116,21 @@ export default class Slick {
             const $preview = $section.find('.single-gallery-preview');
 
             const param = {
-                lazyLoad: 'ondemand',
+                // lazyLoad: 'ondemand',
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 arrows: true,
                 prevArrow: $prev,
                 nextArrow: $next,
                 dots: false,
-                accessibility: true,
-                autoplay: false,
-                infinite: false
+                // accessibility: true,
+                // autoplay: false,
+                // infinite: false
             };
 
             if ($preview.length > 0) {
                 $preview.slick({
-                    lazyLoad: 'ondemand',
+                    // lazyLoad: 'ondemand',
                     slidesToShow: 4,
                     slidesToScroll: 1,
                     asNavFor: $slider,
