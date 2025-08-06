@@ -1,0 +1,132 @@
+.news-item {
+  background: rgba(40, 39, 49, 0.35);
+  border-radius: 2.2rem;
+
+  &-content{
+    padding: 2.4rem;
+    padding-top: 0;
+    @media (max-width: 1200px) {
+      padding-left: 1.4rem;
+      padding-right: 1.4rem;
+    }
+  }
+
+  &-head {
+    display: flex;
+    margin-bottom: 2rem;
+    @media (max-width: 768px) {
+      flex-wrap: wrap;
+    }
+    & > * {
+      display: inline;
+      @media (max-width: 768px) {
+        display: inline-block;
+      }
+    }
+    &, & > * {
+
+      color: #A7A6A8;
+      font-size: 1.6rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 2.8rem;
+      @media (max-width: 800px) {
+        font-size: 1.4rem;
+        line-height: 2rem;
+      }
+    }
+  }
+
+  &__views {
+    padding-left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+
+    .icon {
+      display: flex;
+      width: 2.4rem;
+      height: 2.4rem;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 0;
+      flex-shrink: 0;
+
+    }
+  }
+
+  &__author {
+    position: relative;
+    display: inline-block;
+    padding-right: 0.5rem;
+    @media (max-width: 768px) {
+      width: 50%;
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+    @media (max-width: 767px) {
+      width: 100%;
+      text-align: right;
+    }
+    @media (max-width: 500px) {
+      width: 50%;
+      text-align: left;
+    }
+    &:after{
+      content: '•';
+      @media (max-width: 1200px) {
+        display: none;
+      }
+      @media (max-width: 1024px) {
+        display: inline;
+      }
+      @media (max-width: 768px) {
+        position: absolute;
+        display: block;
+        right: -4px;
+        top: 50%;
+        transform: translateY(-50%);
+        content: '';
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: #A7A6A8;
+      }
+      @media (max-width: 767px) {
+        display: none;
+      }
+    }
+  }
+  &__date{
+
+    @media (max-width: 1200px) {
+      display: none;
+    }
+    @media (max-width: 1024px) {
+      display: inline;
+    }
+    @media (max-width: 768px) {
+      width: 50%;
+      text-align: right;
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+    @media (max-width: 500px) {
+      width: 50%;
+    }
+  }
+  &__link {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &__image{
+    &.product-video{
+      height: 31rem;
+    }
+  }
+}

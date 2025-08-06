@@ -1,0 +1,13 @@
+.section-padding--small{
+  &:not(:first-child){
+    padding-top: 4.5rem;
+    @media (max-width: 1024px) {
+      padding-top: 3rem;
+    }
+  }
+
+  padding-bottom: 4.5rem;
+  @media (max-width: 1024px) {
+    padding-bottom: 3rem;
+  }
+}

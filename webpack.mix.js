@@ -8,6 +8,11 @@ mix.js('resources/js/app.js', 'assets/js')
         sassOptions: {
             outputStyle: 'expanded'
         }
+    })
+    .sass('resources/sass/blog.scss', 'assets/css', {
+        sassOptions: {
+            outputStyle: 'expanded'
+        }
     }).options({
     postCss: [
         autoprefixer({
