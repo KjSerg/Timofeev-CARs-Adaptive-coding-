@@ -4,6 +4,10 @@ mix.js('resources/js/app.js', 'assets/js')
     .autoload({
         jquery: ['$', 'window.jQuery', 'jQuery']
     })
+    .js('resources/js/blog.js', 'assets/js')
+    .autoload({
+        jquery: ['$', 'window.jQuery', 'jQuery']
+    })
     .sass('resources/sass/app.scss', 'assets/css', {
         sassOptions: {
             outputStyle: 'expanded'
