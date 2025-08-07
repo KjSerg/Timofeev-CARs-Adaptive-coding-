@@ -1,3 +1,7 @@
+import {hidePreloader} from "./components/utils/_helpers";
+import {showPreloader} from "./components/utils/_helpers";
+import {isJsonString} from "./components/utils/_helpers";
+
 $(document).ready(function () {
     wrapArticleTables();
     createSidebarList();
@@ -10,6 +14,29 @@ $(document).ready(function () {
         if ($el.length === 0) return;
         $('html, body').animate({
             scrollTop: $el.offset().top
+        });
+    })
+    $(document).on('click', '.single-article-comment__dislike, .single-article-comment__like', function (e) {
+        e.preventDefault();
+        const $t = $(this);
+        const id = $t.attr('data-id');
+        if (id === undefined || id === '') return;
+        $t.addClass('not-active');
+        $.ajax({
+            type: 'POST',
+            url: adminAjax,
+            data: {
+                action: 'set_comment_reaction',
+                id: id,
+                is_like: $t.hasClass('single-article-comment__like')
+            }
+        }).done(function (r) {
+            $t.removeClass('not-active');
+            if (!r) return;
+            if (!isJsonString(r)) console.log(r);
+            const res = JSON.parse(r);
+            $(document).find(`.single-article-comment__like[data-id="${id}"] .counter`).text(res.like || 0);
+            $(document).find(`.single-article-comment__dislike[data-id="${id}"] .counter`).text(res.dislike || 0);
         });
     })
 });

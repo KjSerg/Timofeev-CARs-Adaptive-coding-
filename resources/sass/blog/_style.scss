@@ -20,7 +20,20 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
+
+  @media (max-width: 1200px) {
+    padding: 2rem;
+  }
+  @media (max-width: 450px) {
+    padding: 1rem;
+    border-radius: 1.2rem;
+  }
   &-form{
+    .form-label{
+      @media (max-width: 900px) {
+        width: 100%!important;
+      }
+    }
 
   }
   &__subtitle{

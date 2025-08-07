@@ -10726,6 +10726,183 @@ return jQuery;
 } );
 
 
+/***/ }),
+
+/***/ "./resources/js/components/utils/_helpers.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/utils/_helpers.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   bytesToKB: () => (/* binding */ bytesToKB),
+/* harmony export */   bytesToMB: () => (/* binding */ bytesToMB),
+/* harmony export */   copyToClipboard: () => (/* binding */ copyToClipboard),
+/* harmony export */   detectBrowser: () => (/* binding */ detectBrowser),
+/* harmony export */   getCookie: () => (/* binding */ getCookie),
+/* harmony export */   getCurrentDate: () => (/* binding */ getCurrentDate),
+/* harmony export */   getQueryParams: () => (/* binding */ getQueryParams),
+/* harmony export */   hidePreloader: () => (/* binding */ hidePreloader),
+/* harmony export */   invertNumber: () => (/* binding */ invertNumber),
+/* harmony export */   isElementInViewport: () => (/* binding */ isElementInViewport),
+/* harmony export */   isEven: () => (/* binding */ isEven),
+/* harmony export */   isHorizontal: () => (/* binding */ isHorizontal),
+/* harmony export */   isImageUrl: () => (/* binding */ isImageUrl),
+/* harmony export */   isInRange: () => (/* binding */ isInRange),
+/* harmony export */   isJsonString: () => (/* binding */ isJsonString),
+/* harmony export */   isMobile: () => (/* binding */ isMobile),
+/* harmony export */   isObjectEmpty: () => (/* binding */ isObjectEmpty),
+/* harmony export */   moveToElement: () => (/* binding */ moveToElement),
+/* harmony export */   randomIntFromInterval: () => (/* binding */ randomIntFromInterval),
+/* harmony export */   removeArrayElement: () => (/* binding */ removeArrayElement),
+/* harmony export */   setCookie: () => (/* binding */ setCookie),
+/* harmony export */   showPreloader: () => (/* binding */ showPreloader)
+/* harmony export */ });
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* provided dependency */ var jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function removeArrayElement(element, array) {
+  var index = array.indexOf(element);
+  if (index !== -1) {
+    array.splice(index, 1);
+  }
+  return array;
+}
+function showPreloader() {
+  $('.preloader').addClass('active');
+}
+function hidePreloader() {
+  $('.preloader').removeClass('active');
+}
+function isJsonString(str) {
+  try {
+    JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
+  return true;
+}
+var isObjectEmpty = function isObjectEmpty(objectName) {
+  return JSON.stringify(objectName) === "{}";
+};
+function isElementInViewport(el) {
+  if (typeof jQuery === "function" && el instanceof jQuery) {
+    el = el[0];
+  }
+  var rect = el.getBoundingClientRect();
+  return rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth);
+}
+function getCurrentDate() {
+  var today = new Date();
+  var day = today.getDate();
+  var month = today.getMonth() + 1;
+  var year = today.getFullYear();
+  day = day < 10 ? "0" + day : day;
+  month = month < 10 ? "0" + month : month;
+  return day + "-" + month + "-" + year;
+}
+function setCookie(name, value, days) {
+  var expires = "";
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/; Secure; SameSite=None";
+}
+function getCookie(name) {
+  var matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+var bytesToMB = function bytesToMB(bytes) {
+  return (bytes / (1024 * 1024)).toFixed(2);
+};
+var bytesToKB = function bytesToKB(bytes) {
+  return Math.floor(bytes / 1000);
+};
+function copyToClipboard(text) {
+  var tempInput = document.createElement('textarea');
+  tempInput.value = text;
+  document.body.appendChild(tempInput);
+  tempInput.select();
+  tempInput.setSelectionRange(0, 99999);
+  document.execCommand('copy');
+  document.body.removeChild(tempInput);
+  console.log('Скопійовано в буфер обміну: ' + text);
+}
+function isImageUrl(string) {
+  return /(jpg|gif|png|JPG|GIF|PNG|JPEG|jpeg|HEIF|heif)$/.test(string);
+}
+function detectBrowser() {
+  var userAgent = navigator.userAgent;
+  var browserName;
+  if (userAgent.indexOf("Firefox") > -1) {
+    browserName = "firefox";
+  } else if (userAgent.indexOf("SamsungBrowser") > -1) {
+    browserName = "samsung-internet";
+  } else if (userAgent.indexOf("Opera") > -1 || userAgent.indexOf("OPR") > -1) {
+    browserName = "opera";
+  } else if (userAgent.indexOf("Trident") > -1) {
+    browserName = "internet-explorer";
+  } else if (userAgent.indexOf("Edge") > -1) {
+    browserName = "edge";
+  } else if (userAgent.indexOf("Chrome") > -1) {
+    browserName = "chrome";
+  } else if (userAgent.indexOf("Safari") > -1) {
+    browserName = "safari";
+  } else {
+    browserName = "unknown";
+  }
+  return browserName;
+}
+function isEven(number) {
+  return number % 2 === 0;
+}
+function randomIntFromInterval(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+function invertNumber(num) {
+  return -num;
+}
+var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+var isHorizontal = window.innerWidth > window.innerHeight;
+function getQueryParams() {
+  var urlParams = new URLSearchParams(window.location.search);
+  var params = {};
+  var _iterator = _createForOfIteratorHelper(urlParams.entries()),
+    _step;
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var _step$value = _slicedToArray(_step.value, 2),
+        key = _step$value[0],
+        value = _step$value[1];
+      params[key] = value;
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+  return params;
+}
+function moveToElement($el) {
+  if ($el.length === 0) return;
+  $('html, body').animate({
+    scrollTop: $el.offset().top
+  });
+}
+function isInRange(number, min, max) {
+  return number >= min && number <= max;
+}
+
 /***/ })
 
 /******/ 	});
@@ -10755,13 +10932,48 @@ return jQuery;
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
 var __webpack_exports__ = {};
-// This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
+// This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
 (() => {
+"use strict";
 /*!******************************!*\
   !*** ./resources/js/blog.js ***!
   \******************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_utils_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/utils/_helpers */ "./resources/js/components/utils/_helpers.js");
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+
+
 $(document).ready(function () {
   wrapArticleTables();
   createSidebarList();
@@ -10774,6 +10986,29 @@ $(document).ready(function () {
     if ($el.length === 0) return;
     $('html, body').animate({
       scrollTop: $el.offset().top
+    });
+  });
+  $(document).on('click', '.single-article-comment__dislike, .single-article-comment__like', function (e) {
+    e.preventDefault();
+    var $t = $(this);
+    var id = $t.attr('data-id');
+    if (id === undefined || id === '') return;
+    $t.addClass('not-active');
+    $.ajax({
+      type: 'POST',
+      url: adminAjax,
+      data: {
+        action: 'set_comment_reaction',
+        id: id,
+        is_like: $t.hasClass('single-article-comment__like')
+      }
+    }).done(function (r) {
+      $t.removeClass('not-active');
+      if (!r) return;
+      if (!(0,_components_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.isJsonString)(r)) console.log(r);
+      var res = JSON.parse(r);
+      $(document).find(".single-article-comment__like[data-id=\"".concat(id, "\"] .counter")).text(res.like || 0);
+      $(document).find(".single-article-comment__dislike[data-id=\"".concat(id, "\"] .counter")).text(res.dislike || 0);
     });
   });
 });

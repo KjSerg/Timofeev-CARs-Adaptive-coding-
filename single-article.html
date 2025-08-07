@@ -74,8 +74,8 @@
                             </a>
                             <div class="news-item__date">22 квітня 2024</div>
                             <div class="news-item__views single-article__comments-count">
-                                <div class="icon"><img src="img/message-text.svg" alt=""></div>
-                                5
+                                <a href="#article-comments" class="icon"><img src="img/message-text.svg" alt=""></a>
+                                <a href="#article-comments-list">5</a>
                             </div>
                             <div class="news-item__views single-article__views">
                                 <div class="icon"><img src="img/eye.svg" alt=""></div>
@@ -158,7 +158,9 @@
 
                         <div class="text-banner" style="background-image: url(img/text-baner.png);">
                             <div class="text-banner__title">Отримати знижку на Tesla з США</div>
-                            <div class="text-banner__subtitle">Після надсилання вам зателефонує консультант та підкаже найвигідніший варіант Tesla.</div>
+                            <div class="text-banner__subtitle">Після надсилання вам зателефонує консультант та підкаже
+                                найвигідніший варіант Tesla.
+                            </div>
                             <form class="text-banner-form form">
                                 <label class="form-label third">
                                     <input type="text" placeholder="Ваше імя">
@@ -167,7 +169,7 @@
                                     <input type="tel" placeholder="Ваш телефон">
                                 </label>
                                 <div class="form-label third">
-                                    <button type="submit">Залишити  заявку</button>
+                                    <button type="submit">Залишити заявку</button>
                                 </div>
                             </form>
                         </div>
@@ -229,7 +231,10 @@
 
                         <div class="text-banner" style="background-image: url(img/text-baner.png);">
                             <div class="text-banner__title">Хочеш Tesla, але не знаєш з чого почати?</div>
-                            <div class="text-banner__subtitle">Отримай безкоштовну консультацію — підкажемо найкращу комплектацію під твій бюджет, розповімо про вигідні варіанти в лізинг або кредит, пояснимо весь процес.</div>
+                            <div class="text-banner__subtitle">Отримай безкоштовну консультацію — підкажемо найкращу
+                                комплектацію під твій бюджет, розповімо про вигідні варіанти в лізинг або кредит,
+                                пояснимо весь процес.
+                            </div>
                             <form class="text-banner-form form">
                                 <label class="form-label third">
                                     <input type="text" placeholder="Ваше імя">
@@ -238,7 +243,7 @@
                                     <input type="tel" placeholder="Ваш телефон">
                                 </label>
                                 <div class="form-label third">
-                                    <button type="submit">Залишити  заявку</button>
+                                    <button type="submit">Залишити заявку</button>
                                 </div>
                             </form>
                         </div>
@@ -246,12 +251,15 @@
                             Висновок
                         </h6>
                         <p>
-                            Придбання Tesla з США – це вигідний варіант для тих, хто хоче отримати якісний електромобіль за нижчою ціною. Головне – правильно підібрати авто, розрахувати всі витрати та співпрацювати з перевіреними компаніями, які допоможуть вам пройти всі етапи без ризиків.
+                            Придбання Tesla з США – це вигідний варіант для тих, хто хоче отримати якісний електромобіль
+                            за нижчою ціною. Головне – правильно підібрати авто, розрахувати всі витрати та
+                            співпрацювати з перевіреними компаніями, які допоможуть вам пройти всі етапи без ризиків.
                         </p>
                     </div>
                     <div class="article-share">
                         <div class="article-share__title">
-                            <span>/</span> Поділитися статтею
+                            <span>/</span>
+                            Поділитися статтею
                         </div>
 
                         <div class="social-networks">
@@ -270,8 +278,8 @@
                         </div>
                     </div>
                     <div class="single-article-comments">
-                        <div class="single-article-comments__title">Залишити відгук</div>
-                        <form  class="form single-article-comments-form">
+                        <div id="article-comments" class="single-article-comments__title">Залишити відгук</div>
+                        <form class="form single-article-comments-form">
                             <label class="form-label half">
                                 <input type="text" placeholder="Ваше імя">
                             </label>
@@ -281,137 +289,179 @@
                             <label class="form-label form-label--height">
                                 <textarea placeholder="Напишіть відгук"></textarea>
                             </label>
-                            <div class="form-label third"><button type="submit">Додати відгук</button></div>
+                            <div class="form-label third">
+                                <button type="submit">Додати відгук</button>
+                            </div>
 
                         </form>
-                        <div class="single-article-comments-list">
+                        <div id="article-comments-list" class="single-article-comments-list">
                             <div class="single-article-comment">
-                                <div class="single-article-comment-content">
-                                    <div class="single-article-comment-head">
-                                        <div class="avatar"><img src="img/a2.png" alt=""></div>
-                                        Катерина · 2 тижні тому
+                                <div class="single-article-comment-head">
+                                    <div class="avatar"><img src="img/a2.png" alt=""></div>
+                                    <div class="single-article-comment-head__text">Катерина · 2 тижні тому</div>
+                                    <div class="single-article-comment-controls">
+                                        <a href="#" data-id="" class="single-article-comment__like">
+                                            <span class="icon"><img src="img/dlike.svg" alt=""></span>
+                                            <span class="counter">7</span>
+                                        </a>
+                                        <a data-id="" href="#" class="single-article-comment__dislike">
+                                            <span class="icon"><img src="img/1like.svg" alt=""></span>
+                                            <span class="counter">7</span>
+                                        </a>
                                     </div>
+                                </div>
+                                <div class="single-article-comment-content">
+
                                     <div class="single-article-comment__text">
                                         <p>
                                             Дуже корисна стаття, якраз думаю замовляти Tesla з США.
                                         </p>
                                     </div>
-                                </div>
-                                <div class="single-article-comment-controls">
-                                    <a href="#" class="single-article-comment__like">
-                                        <span class="icon"><img src="img/dlike.svg" alt=""></span> <span class="counter">7</span>
-                                    </a>
-                                    <a href="#" class="single-article-comment__dislike">
-                                        <span class="icon"><img src="img/1like.svg" alt=""></span> <span class="counter">7</span>
-                                    </a>
                                 </div>
                             </div>
                             <div class="single-article-comment">
-                                <div class="single-article-comment-content">
-                                    <div class="single-article-comment-head">
-                                        <div class="avatar"><img src="img/a2.png" alt=""></div>
-                                        Катерина · 2 тижні тому
-                                    </div>
-                                    <div class="single-article-comment__text">
-                                        <p>
-                                            Дуже корисна стаття, якраз думаю замовляти Tesla з США.
-                                            Дуже корисна стаття, якраз думаю замовляти Tesla з США.
-                                            Дуже корисна стаття, якраз думаю замовляти Tesla з США.
-                                            Дуже корисна стаття, якраз думаю замовляти Tesla з США.
-                                        </p>
+                                <div class="single-article-comment-head">
+                                    <div class="avatar"><img src="img/a2.png" alt=""></div>
+                                    <div class="single-article-comment-head__text">Катерина · 2 тижні тому</div>
+                                    <div class="single-article-comment-controls">
+                                        <a href="#" data-id="" class="single-article-comment__like">
+                                            <span class="icon"><img src="img/dlike.svg" alt=""></span>
+                                            <span class="counter">7</span>
+                                        </a>
+                                        <a data-id="" href="#" class="single-article-comment__dislike">
+                                            <span class="icon"><img src="img/1like.svg" alt=""></span>
+                                            <span class="counter">7</span>
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="single-article-comment-controls">
-                                    <a href="#" class="single-article-comment__like">
-                                        <span class="icon"><img src="img/dlike.svg" alt=""></span> <span class="counter">7</span>
-                                    </a>
-                                    <a href="#" class="single-article-comment__dislike">
-                                        <span class="icon"><img src="img/1like.svg" alt=""></span> <span class="counter">7</span>
-                                    </a>
+                                <div class="single-article-comment-content">
+
+                                    <div class="single-article-comment__text">
+                                        <p>
+                                            Дуже корисна стаття, якраз думаю замовляти Tesla з США. Дуже корисна стаття, якраз думаю замовляти Tesla з США.
+                                            Дуже корисна стаття, якраз думаю замовляти Tesla з США.Дуже корисна стаття, якраз думаю замовляти Tesla з США.Дуже корисна стаття, якраз думаю замовляти Tesla з США.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="single-article-comment">
-                                <div class="single-article-comment-content">
-                                    <div class="single-article-comment-head">
-                                        <div class="avatar"><img src="img/a2.png" alt=""></div>
-                                        Катерина · 2 тижні тому
+                                <div class="single-article-comment-head">
+                                    <div class="avatar"><img src="img/a2.png" alt=""></div>
+                                    <div class="single-article-comment-head__text">Катерина · 2 тижні тому</div>
+                                    <div class="single-article-comment-controls">
+                                        <a href="#" data-id="" class="single-article-comment__like">
+                                            <span class="icon"><img src="img/dlike.svg" alt=""></span>
+                                            <span class="counter">7</span>
+                                        </a>
+                                        <a data-id="" href="#" class="single-article-comment__dislike">
+                                            <span class="icon"><img src="img/1like.svg" alt=""></span>
+                                            <span class="counter">7</span>
+                                        </a>
                                     </div>
+                                </div>
+                                <div class="single-article-comment-content">
+
                                     <div class="single-article-comment__text">
                                         <p>
                                             Дуже корисна стаття, якраз думаю замовляти Tesla з США.
                                         </p>
                                     </div>
-                                </div>
-                                <div class="single-article-comment-controls">
-                                    <a href="#" class="single-article-comment__like">
-                                        <span class="icon"><img src="img/dlike.svg" alt=""></span> <span class="counter">7</span>
-                                    </a>
-                                    <a href="#" class="single-article-comment__dislike">
-                                        <span class="icon"><img src="img/1like.svg" alt=""></span> <span class="counter">7</span>
-                                    </a>
                                 </div>
                             </div>
                             <div class="single-article-comment">
-                                <div class="single-article-comment-content">
-                                    <div class="single-article-comment-head">
-                                        <div class="avatar"><img src="img/a2.png" alt=""></div>
-                                        Катерина · 2 тижні тому
+                                <div class="single-article-comment-head">
+                                    <div class="avatar"><img src="img/a2.png" alt=""></div>
+                                    <div class="single-article-comment-head__text">Катерина · 2 тижні тому</div>
+                                    <div class="single-article-comment-controls">
+                                        <a href="#" data-id="" class="single-article-comment__like">
+                                            <span class="icon"><img src="img/dlike.svg" alt=""></span>
+                                            <span class="counter">7</span>
+                                        </a>
+                                        <a data-id="" href="#" class="single-article-comment__dislike">
+                                            <span class="icon"><img src="img/1like.svg" alt=""></span>
+                                            <span class="counter">7</span>
+                                        </a>
                                     </div>
+                                </div>
+                                <div class="single-article-comment-content">
+
                                     <div class="single-article-comment__text">
                                         <p>
                                             Дуже корисна стаття, якраз думаю замовляти Tesla з США.
                                         </p>
                                     </div>
-                                </div>
-                                <div class="single-article-comment-controls">
-                                    <a href="#" class="single-article-comment__like">
-                                        <span class="icon"><img src="img/dlike.svg" alt=""></span> <span class="counter">7</span>
-                                    </a>
-                                    <a href="#" class="single-article-comment__dislike">
-                                        <span class="icon"><img src="img/1like.svg" alt=""></span> <span class="counter">7</span>
-                                    </a>
                                 </div>
                             </div>
                             <div class="single-article-comment">
-                                <div class="single-article-comment-content">
-                                    <div class="single-article-comment-head">
-                                        <div class="avatar"><img src="img/a2.png" alt=""></div>
-                                        Катерина · 2 тижні тому
+                                <div class="single-article-comment-head">
+                                    <div class="avatar"><img src="img/a2.png" alt=""></div>
+                                    <div class="single-article-comment-head__text">Катерина · 2 тижні тому</div>
+                                    <div class="single-article-comment-controls">
+                                        <a href="#" data-id="" class="single-article-comment__like">
+                                            <span class="icon"><img src="img/dlike.svg" alt=""></span>
+                                            <span class="counter">7</span>
+                                        </a>
+                                        <a data-id="" href="#" class="single-article-comment__dislike">
+                                            <span class="icon"><img src="img/1like.svg" alt=""></span>
+                                            <span class="counter">7</span>
+                                        </a>
                                     </div>
+                                </div>
+                                <div class="single-article-comment-content">
+
                                     <div class="single-article-comment__text">
                                         <p>
                                             Дуже корисна стаття, якраз думаю замовляти Tesla з США.
                                         </p>
                                     </div>
-                                </div>
-                                <div class="single-article-comment-controls">
-                                    <a href="#" class="single-article-comment__like">
-                                        <span class="icon"><img src="img/dlike.svg" alt=""></span> <span class="counter">7</span>
-                                    </a>
-                                    <a href="#" class="single-article-comment__dislike">
-                                        <span class="icon"><img src="img/1like.svg" alt=""></span> <span class="counter">7</span>
-                                    </a>
                                 </div>
                             </div>
                             <div class="single-article-comment">
-                                <div class="single-article-comment-content">
-                                    <div class="single-article-comment-head">
-                                        <div class="avatar"><img src="img/a2.png" alt=""></div>
-                                        Катерина · 2 тижні тому
+                                <div class="single-article-comment-head">
+                                    <div class="avatar"><img src="img/a2.png" alt=""></div>
+                                    <div class="single-article-comment-head__text">Катерина · 2 тижні тому</div>
+                                    <div class="single-article-comment-controls">
+                                        <a href="#" data-id="" class="single-article-comment__like">
+                                            <span class="icon"><img src="img/dlike.svg" alt=""></span>
+                                            <span class="counter">7</span>
+                                        </a>
+                                        <a data-id="" href="#" class="single-article-comment__dislike">
+                                            <span class="icon"><img src="img/1like.svg" alt=""></span>
+                                            <span class="counter">7</span>
+                                        </a>
                                     </div>
+                                </div>
+                                <div class="single-article-comment-content">
+
                                     <div class="single-article-comment__text">
                                         <p>
                                             Дуже корисна стаття, якраз думаю замовляти Tesla з США.
                                         </p>
                                     </div>
                                 </div>
-                                <div class="single-article-comment-controls">
-                                    <a href="#" class="single-article-comment__like">
-                                        <span class="icon"><img src="img/dlike.svg" alt=""></span> <span class="counter">7</span>
-                                    </a>
-                                    <a href="#" class="single-article-comment__dislike">
-                                        <span class="icon"><img src="img/1like.svg" alt=""></span> <span class="counter">7</span>
-                                    </a>
+                            </div>
+                            <div class="single-article-comment">
+                                <div class="single-article-comment-head">
+                                    <div class="avatar"><img src="img/a2.png" alt=""></div>
+                                    <div class="single-article-comment-head__text">Катерина · 2 тижні тому</div>
+                                    <div class="single-article-comment-controls">
+                                        <a href="#" data-id="" class="single-article-comment__like">
+                                            <span class="icon"><img src="img/dlike.svg" alt=""></span>
+                                            <span class="counter">7</span>
+                                        </a>
+                                        <a data-id="" href="#" class="single-article-comment__dislike">
+                                            <span class="icon"><img src="img/1like.svg" alt=""></span>
+                                            <span class="counter">7</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="single-article-comment-content">
+
+                                    <div class="single-article-comment__text">
+                                        <p>
+                                            Дуже корисна стаття, якраз думаю замовляти Tesla з США.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
