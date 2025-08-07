@@ -1,0 +1,112 @@
+.author {
+  &-socials{
+    justify-content: flex-start;
+    @media (max-width: 450px) {
+      justify-content: center;
+    }
+    .social-network{
+      padding: 0;
+      &:after{
+        display: none;
+      }
+      &:not(:last-child){
+        margin-right: 4rem;
+      }
+    }
+  }
+  &-content {
+
+    width: 100%;
+    max-width: 64rem;
+  }
+  &-details {
+    padding: 2.4rem;
+    border-radius: 1.4rem;
+    background:  #16141B;
+    @media (max-width: 1024px) {
+      padding: 1.4rem;
+    }
+    &:not(:last-child){
+      margin-bottom: 4rem;
+      @media (max-width: 1024px) {
+        margin-bottom: 2rem;
+      }
+    }
+    &-list {
+      margin-bottom: 2rem;
+      color: #A7A6A8;
+      font-size: 1.6rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 2.8rem;
+
+      &-item {
+
+        &:not(:last-child) {
+          margin-bottom: 1rem;
+        }
+        &__text{
+          padding-left: 4rem;
+        }
+        &-head {
+          gap: 1.6rem;
+          display: flex;
+          align-items: flex-start;
+          color: #FFF;
+
+          &:not(:last-child) {
+            margin-bottom: 1rem;
+          }
+
+          .icon {
+            margin-top: 2px;
+            width: 2.4rem;
+            height: 2.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 0;
+            flex-shrink: 0;
+          }
+        }
+      }
+    }
+
+    &__name {
+      margin-bottom: 2rem;
+      color: #FFF;
+      font-size: 1.8rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 3rem;
+    }
+  }
+  &-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8rem;
+    @media (max-width: 1024px) {
+      gap: 4rem;
+    }
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  &-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 37.7rem;
+    height: 25.6rem;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border-radius: 2.2rem;
+    overflow: hidden;
+    @media (max-width: 380px) {
+
+      width: 100%;
+    }
+  }
+}
